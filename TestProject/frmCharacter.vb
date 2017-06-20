@@ -5,38 +5,22 @@ Public Class frmCharacter
 
     End Sub
 
-    Public Sub Read()
-        'Creating StreamReader to read description text
-        Dim sr As StreamReader = New StreamReader("../../txt/classdesc.txt")
-        'Setting file to be read and outputting lines
-        Dim numLines As Integer = 0
-        Dim line As String = sr.ReadLine()
-        While line IsNot Nothing
-            numLines = numLines + 1
-            line = sr.ReadLine()
-        End While
-        'If statements to output descriptions
-        If btnStreetSam.Checked = True Then
-            lstDesc.Items.Clear()
-            line = sr.ReadLine()
-            lstDesc.Items.Add(line)
-        End If
-        If btnGunBunny.Checked = True Then
-            lstDesc.Items.Clear()
-            line = sr.ReadLine(2)
-            lstDesc.Items.Add(line)
-        End If
-        If btnDecker.Checked = True Then
-            lstDesc.Items.Clear()
-            line = sr.ReadLine(3)
-            lstDesc.Items.Add(line)
-        End If
-        If btnTank.Checked = True Then
-            lstDesc.Items.Clear()
-            line = sr.ReadLine(4)
-            lstDesc.Items.Add(line)
-        End If
-        sr.Close()
+    Public Sub ReadClass()
+        Dim strDescText As String
+        Dim intDescLine As Integer
+        lstDesc.Items.Clear()
+        Select Case strClass
+            Case "StreetSam"
+                intDescLine = 0
+            Case "GunBunny"
+                intDescLine = 1
+            Case "Decker"
+                intDescLine = 2
+            Case "Tank"
+                intDescLine = 3
+        End Select
+        strDescText = File.ReadAllLines("..\..\txt\classdesc.txt").ElementAt(intDescLine).ToString
+        lstDesc.Items.Add(strDescText)
     End Sub
 
     Private Sub btnStreetSam_CheckedChanged(sender As Object, e As EventArgs) Handles btnStreetSam.CheckedChanged
@@ -44,9 +28,9 @@ Public Class frmCharacter
         blnStatsMade = False
         strClass = "StreetSam"
         StatCheck()
-        Read()
+        ReadClass()
         lblAgility.Text = intAgility.ToString
-        lblIntelligence.Text = lblIntelligence.ToString
+        lblIntelligence.Text = intIntelligence.ToString
         lblStrength.Text = intStrength.ToString
         lblToughness.Text = intToughness.ToString
         lblHP.Text = intMaxHealth.ToString
@@ -57,9 +41,9 @@ Public Class frmCharacter
         blnStatsMade = False
         strClass = "GunBunny"
         StatCheck()
-        Read()
+        ReadClass()
         lblAgility.Text = intAgility.ToString
-        lblIntelligence.Text = lblIntelligence.ToString
+        lblIntelligence.Text = intIntelligence.ToString
         lblStrength.Text = intStrength.ToString
         lblToughness.Text = intToughness.ToString
         lblHP.Text = intMaxHealth.ToString
@@ -70,9 +54,9 @@ Public Class frmCharacter
         blnStatsMade = False
         strClass = "Decker"
         StatCheck()
-        Read()
+        ReadClass()
         lblAgility.Text = intAgility.ToString
-        lblIntelligence.Text = lblIntelligence.ToString
+        lblIntelligence.Text = intIntelligence.ToString
         lblStrength.Text = intStrength.ToString
         lblToughness.Text = intToughness.ToString
         lblHP.Text = intMaxHealth.ToString
@@ -83,9 +67,9 @@ Public Class frmCharacter
         blnStatsMade = False
         strClass = "Tank"
         StatCheck()
-        Read()
+        ReadClass()
         lblAgility.Text = intAgility.ToString
-        lblIntelligence.Text = lblIntelligence.ToString
+        lblIntelligence.Text = intIntelligence.ToString
         lblStrength.Text = intStrength.ToString
         lblToughness.Text = intToughness.ToString
         lblHP.Text = intMaxHealth.ToString
