@@ -100,4 +100,20 @@
         End Select
         Return (intCurrentHealth)
     End Function
+
+    'Raises Max HP and current HP
+    Public Function HPup()
+        intHPBonus += 1
+        intCurrentHealth += 1
+        Return (intCurrentHealth)
+    End Function
+
+    'Lowers Max HP - if current HP is lower than Max HP, current HP is not affected
+    Public Function HPDown()
+        intHPMalus += 1
+        If intCurrentHealth > intMaxHealth Then
+            intCurrentHealth = intMaxHealth
+        End If
+        Return (intCurrentHealth)
+    End Function
 End Module

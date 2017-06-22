@@ -18,6 +18,8 @@
     Public intMaxHealth As Integer 'Maximum HP, affected by Toughness and items.
     Public intCurrentHealth As Integer 'Current HP, affected by whether the player has been attacked successfully.
     Public intCritical As Integer 'Critical Hit Chance, affected by the equipped weapon and Luck.
+    Public intHPBonus As Integer 'HP Bonus, applied by items and events that boost Max HP without boosting Toughness
+    Public intHPMalus As Integer 'HP Malus, applied by items and events that lower Max HP without lowering Toughness
 
     Public intNameCount As Integer 'Set name counter for character validation
     Public blnNameChecked As Boolean = False 'Verify that name has been checked

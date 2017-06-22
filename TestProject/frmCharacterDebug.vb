@@ -50,6 +50,8 @@
     Private Sub btnTghUp_Click(sender As Object, e As EventArgs) Handles btnTghUp.Click
         tghUp()
         updatestats()
+        intMaxHealth = (intToughness * 3) + intHPBonus - intHPMalus
+        lblCurrHP.Text = intCurrentHealth.ToString
         HPcheck()
         stsFeedLbl.Text = "You feel tougher."
     End Sub
@@ -57,6 +59,8 @@
     Private Sub btnTghDown_Click(sender As Object, e As EventArgs) Handles btnTghDown.Click
         tghDown()
         updatestats()
+        intMaxHealth = (intToughness * 3) + intHPBonus - intHPMalus
+        lblCurrHP.Text = intCurrentHealth.ToString
         HPcheck()
         stsFeedLbl.Text = "You feel more fragile."
     End Sub
@@ -93,7 +97,6 @@
     End Sub
 
     Private Sub updatestats()
-        intMaxHealth = intToughness * 3
         intCritical = (intAgility * 2) + intLuck
         lblAgility.Text = intAgility.ToString
         lblStrength.Text = intStrength.ToString
@@ -104,5 +107,19 @@
         lblLuck.Text = intLuck.ToString
         lblCrit.Text = (intCritical / 100).ToString("p")
     End Sub
+
+    Private Sub btnHPup_Click(sender As Object, e As EventArgs) Handles btnHPup.Click
+        HPup()
+        HPcheck()
+        updatestats()
+
+    End Sub
+
+    Private Sub btnHPDown_Click(sender As Object, e As EventArgs) Handles btnHPDown.Click
+        HPDown()
+        HPcheck()
+        updatestats()
+    End Sub
+
 
 End Class
