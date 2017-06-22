@@ -26,7 +26,7 @@ Public Class frmCharacter
     Private Sub btnStreetSam_CheckedChanged(sender As Object, e As EventArgs) Handles btnStreetSam.CheckedChanged
         blnStatsChecked = False
         blnStatsMade = False
-        strClass = "StreetSam"
+        strClass = "Street Samurai"
         StatCheck()
         ReadClass()
         lblAgility.Text = intAgility.ToString
@@ -39,7 +39,7 @@ Public Class frmCharacter
     Private Sub btnGunBunny_CheckedChanged(sender As Object, e As EventArgs) Handles btnGunBunny.CheckedChanged
         blnStatsChecked = False
         blnStatsMade = False
-        strClass = "GunBunny"
+        strClass = "Gun-Bunny"
         StatCheck()
         ReadClass()
         lblAgility.Text = intAgility.ToString
@@ -73,5 +73,22 @@ Public Class frmCharacter
         lblStrength.Text = intStrength.ToString
         lblToughness.Text = intToughness.ToString
         lblHP.Text = intMaxHealth.ToString
+    End Sub
+
+    Private Sub btnLaunch_Click(sender As Object, e As EventArgs) Handles btnLaunch.Click
+        'This generates the derived stats, stores the character name, and launches the character-debug pseudo-gameplay form.
+        strName = txtName.Text
+        If blnStatsChecked = True Then
+            statgen()
+        Else
+            MessageBox.Show("Please select a class.")
+        End If
+        NameCheck()
+        If blnNameChecked = True And blnStatsChecked = True Then
+            Me.Close()
+            frmCharacterDebug.Show()
+        End If
+
+
     End Sub
 End Class

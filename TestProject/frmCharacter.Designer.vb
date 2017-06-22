@@ -23,26 +23,26 @@ Partial Class frmCharacter
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.boxClass = New System.Windows.Forms.GroupBox()
+        Me.btnTank = New System.Windows.Forms.RadioButton()
+        Me.btnDecker = New System.Windows.Forms.RadioButton()
+        Me.btnGunBunny = New System.Windows.Forms.RadioButton()
+        Me.btnStreetSam = New System.Windows.Forms.RadioButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.boxDesc = New System.Windows.Forms.GroupBox()
+        Me.lstDesc = New System.Windows.Forms.ListBox()
         Me.boxStats = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.lblStrength = New System.Windows.Forms.Label()
-        Me.lblAgility = New System.Windows.Forms.Label()
-        Me.lblIntelligence = New System.Windows.Forms.Label()
-        Me.lblToughness = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.lblHP = New System.Windows.Forms.Label()
-        Me.btnStreetSam = New System.Windows.Forms.RadioButton()
-        Me.btnGunBunny = New System.Windows.Forms.RadioButton()
-        Me.btnDecker = New System.Windows.Forms.RadioButton()
-        Me.btnTank = New System.Windows.Forms.RadioButton()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblToughness = New System.Windows.Forms.Label()
+        Me.lblIntelligence = New System.Windows.Forms.Label()
+        Me.lblAgility = New System.Windows.Forms.Label()
+        Me.lblStrength = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.btnLaunch = New System.Windows.Forms.Button()
         Me.txtName = New System.Windows.Forms.TextBox()
-        Me.lstDesc = New System.Windows.Forms.ListBox()
         Me.boxClass.SuspendLayout()
         Me.boxDesc.SuspendLayout()
         Me.boxStats.SuspendLayout()
@@ -60,6 +60,50 @@ Partial Class frmCharacter
         Me.boxClass.TabIndex = 0
         Me.boxClass.TabStop = False
         Me.boxClass.Text = "Classes"
+        '
+        'btnTank
+        '
+        Me.btnTank.AutoSize = True
+        Me.btnTank.Location = New System.Drawing.Point(6, 136)
+        Me.btnTank.Name = "btnTank"
+        Me.btnTank.Size = New System.Drawing.Size(50, 17)
+        Me.btnTank.TabIndex = 13
+        Me.btnTank.TabStop = True
+        Me.btnTank.Text = "Tank"
+        Me.btnTank.UseVisualStyleBackColor = True
+        '
+        'btnDecker
+        '
+        Me.btnDecker.AutoSize = True
+        Me.btnDecker.Location = New System.Drawing.Point(6, 106)
+        Me.btnDecker.Name = "btnDecker"
+        Me.btnDecker.Size = New System.Drawing.Size(60, 17)
+        Me.btnDecker.TabIndex = 12
+        Me.btnDecker.TabStop = True
+        Me.btnDecker.Text = "Decker"
+        Me.btnDecker.UseVisualStyleBackColor = True
+        '
+        'btnGunBunny
+        '
+        Me.btnGunBunny.AutoSize = True
+        Me.btnGunBunny.Location = New System.Drawing.Point(6, 76)
+        Me.btnGunBunny.Name = "btnGunBunny"
+        Me.btnGunBunny.Size = New System.Drawing.Size(78, 17)
+        Me.btnGunBunny.TabIndex = 11
+        Me.btnGunBunny.TabStop = True
+        Me.btnGunBunny.Text = "Gun-Bunny"
+        Me.btnGunBunny.UseVisualStyleBackColor = True
+        '
+        'btnStreetSam
+        '
+        Me.btnStreetSam.AutoSize = True
+        Me.btnStreetSam.Location = New System.Drawing.Point(6, 42)
+        Me.btnStreetSam.Name = "btnStreetSam"
+        Me.btnStreetSam.Size = New System.Drawing.Size(94, 17)
+        Me.btnStreetSam.TabIndex = 10
+        Me.btnStreetSam.TabStop = True
+        Me.btnStreetSam.Text = "Street Samurai"
+        Me.btnStreetSam.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -80,6 +124,15 @@ Partial Class frmCharacter
         Me.boxDesc.TabStop = False
         Me.boxDesc.Text = "Description"
         '
+        'lstDesc
+        '
+        Me.lstDesc.FormattingEnabled = True
+        Me.lstDesc.Location = New System.Drawing.Point(6, 19)
+        Me.lstDesc.Name = "lstDesc"
+        Me.lstDesc.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.lstDesc.Size = New System.Drawing.Size(188, 160)
+        Me.lstDesc.TabIndex = 14
+        '
         'boxStats
         '
         Me.boxStats.Controls.Add(Me.lblHP)
@@ -99,77 +152,14 @@ Partial Class frmCharacter
         Me.boxStats.TabStop = False
         Me.boxStats.Text = "Stats"
         '
-        'Label2
+        'lblHP
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(19, 46)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(47, 13)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Strength"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(32, 78)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(34, 13)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Agility"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(5, 108)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(61, 13)
-        Me.Label4.TabIndex = 2
-        Me.Label4.Text = "Intelligence"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 138)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(60, 13)
-        Me.Label5.TabIndex = 3
-        Me.Label5.Text = "Toughness"
-        '
-        'lblStrength
-        '
-        Me.lblStrength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblStrength.Location = New System.Drawing.Point(116, 45)
-        Me.lblStrength.Name = "lblStrength"
-        Me.lblStrength.Size = New System.Drawing.Size(100, 23)
-        Me.lblStrength.TabIndex = 4
-        Me.lblStrength.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblAgility
-        '
-        Me.lblAgility.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblAgility.Location = New System.Drawing.Point(116, 77)
-        Me.lblAgility.Name = "lblAgility"
-        Me.lblAgility.Size = New System.Drawing.Size(100, 23)
-        Me.lblAgility.TabIndex = 5
-        Me.lblAgility.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblIntelligence
-        '
-        Me.lblIntelligence.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblIntelligence.Location = New System.Drawing.Point(116, 107)
-        Me.lblIntelligence.Name = "lblIntelligence"
-        Me.lblIntelligence.Size = New System.Drawing.Size(100, 23)
-        Me.lblIntelligence.TabIndex = 6
-        Me.lblIntelligence.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblToughness
-        '
-        Me.lblToughness.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblToughness.Location = New System.Drawing.Point(116, 137)
-        Me.lblToughness.Name = "lblToughness"
-        Me.lblToughness.Size = New System.Drawing.Size(100, 23)
-        Me.lblToughness.TabIndex = 7
-        Me.lblToughness.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblHP.Location = New System.Drawing.Point(116, 214)
+        Me.lblHP.Name = "lblHP"
+        Me.lblHP.Size = New System.Drawing.Size(100, 23)
+        Me.lblHP.TabIndex = 9
+        Me.lblHP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label6
         '
@@ -180,58 +170,77 @@ Partial Class frmCharacter
         Me.Label6.TabIndex = 8
         Me.Label6.Text = "Health"
         '
-        'lblHP
+        'lblToughness
         '
-        Me.lblHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblHP.Location = New System.Drawing.Point(116, 214)
-        Me.lblHP.Name = "lblHP"
-        Me.lblHP.Size = New System.Drawing.Size(100, 23)
-        Me.lblHP.TabIndex = 9
-        Me.lblHP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblToughness.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblToughness.Location = New System.Drawing.Point(116, 137)
+        Me.lblToughness.Name = "lblToughness"
+        Me.lblToughness.Size = New System.Drawing.Size(100, 23)
+        Me.lblToughness.TabIndex = 7
+        Me.lblToughness.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btnStreetSam
+        'lblIntelligence
         '
-        Me.btnStreetSam.AutoSize = True
-        Me.btnStreetSam.Location = New System.Drawing.Point(6, 42)
-        Me.btnStreetSam.Name = "btnStreetSam"
-        Me.btnStreetSam.Size = New System.Drawing.Size(94, 17)
-        Me.btnStreetSam.TabIndex = 10
-        Me.btnStreetSam.TabStop = True
-        Me.btnStreetSam.Text = "Street Samurai"
-        Me.btnStreetSam.UseVisualStyleBackColor = True
+        Me.lblIntelligence.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblIntelligence.Location = New System.Drawing.Point(116, 107)
+        Me.lblIntelligence.Name = "lblIntelligence"
+        Me.lblIntelligence.Size = New System.Drawing.Size(100, 23)
+        Me.lblIntelligence.TabIndex = 6
+        Me.lblIntelligence.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btnGunBunny
+        'lblAgility
         '
-        Me.btnGunBunny.AutoSize = True
-        Me.btnGunBunny.Location = New System.Drawing.Point(6, 76)
-        Me.btnGunBunny.Name = "btnGunBunny"
-        Me.btnGunBunny.Size = New System.Drawing.Size(78, 17)
-        Me.btnGunBunny.TabIndex = 11
-        Me.btnGunBunny.TabStop = True
-        Me.btnGunBunny.Text = "Gun-Bunny"
-        Me.btnGunBunny.UseVisualStyleBackColor = True
+        Me.lblAgility.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblAgility.Location = New System.Drawing.Point(116, 77)
+        Me.lblAgility.Name = "lblAgility"
+        Me.lblAgility.Size = New System.Drawing.Size(100, 23)
+        Me.lblAgility.TabIndex = 5
+        Me.lblAgility.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btnDecker
+        'lblStrength
         '
-        Me.btnDecker.AutoSize = True
-        Me.btnDecker.Location = New System.Drawing.Point(6, 106)
-        Me.btnDecker.Name = "btnDecker"
-        Me.btnDecker.Size = New System.Drawing.Size(60, 17)
-        Me.btnDecker.TabIndex = 12
-        Me.btnDecker.TabStop = True
-        Me.btnDecker.Text = "Decker"
-        Me.btnDecker.UseVisualStyleBackColor = True
+        Me.lblStrength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblStrength.Location = New System.Drawing.Point(116, 45)
+        Me.lblStrength.Name = "lblStrength"
+        Me.lblStrength.Size = New System.Drawing.Size(100, 23)
+        Me.lblStrength.TabIndex = 4
+        Me.lblStrength.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'btnTank
+        'Label5
         '
-        Me.btnTank.AutoSize = True
-        Me.btnTank.Location = New System.Drawing.Point(6, 136)
-        Me.btnTank.Name = "btnTank"
-        Me.btnTank.Size = New System.Drawing.Size(50, 17)
-        Me.btnTank.TabIndex = 13
-        Me.btnTank.TabStop = True
-        Me.btnTank.Text = "Tank"
-        Me.btnTank.UseVisualStyleBackColor = True
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 138)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(60, 13)
+        Me.Label5.TabIndex = 3
+        Me.Label5.Text = "Toughness"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(5, 108)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(61, 13)
+        Me.Label4.TabIndex = 2
+        Me.Label4.Text = "Intelligence"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(32, 78)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(34, 13)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Agility"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(19, 46)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(47, 13)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Strength"
         '
         'btnLaunch
         '
@@ -249,15 +258,6 @@ Partial Class frmCharacter
         Me.txtName.Size = New System.Drawing.Size(200, 20)
         Me.txtName.TabIndex = 0
         Me.txtName.Text = "Name"
-        '
-        'lstDesc
-        '
-        Me.lstDesc.FormattingEnabled = True
-        Me.lstDesc.Location = New System.Drawing.Point(6, 19)
-        Me.lstDesc.Name = "lstDesc"
-        Me.lstDesc.SelectionMode = System.Windows.Forms.SelectionMode.None
-        Me.lstDesc.Size = New System.Drawing.Size(188, 160)
-        Me.lstDesc.TabIndex = 14
         '
         'frmCharacter
         '
