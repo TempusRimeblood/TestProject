@@ -67,10 +67,6 @@
         Randomize()
         'This determines intLuck randomly, as a value between 1 and 6.
         intLuck = CInt(6 * Rnd() + 1)
-        'This sets MaxHealth to Toughness * 3.
-        'intMaxHealth = intToughness * 3
-        'This sets CurrentHealth to be equal to MaxHealth, to prevent an instant failstate.
-        intCurrentHealth = intMaxHealth
         'This determines Critical Chance, using Agility as the base stat and intLuck as a modifier.
         intCritical = (intAgility * 2) + intLuck
         'This line returns the blnStatsMade value to True, allowing the game to launch.
@@ -84,6 +80,7 @@
                     IsNumeric(strName.ElementAt(intNameCount)) Then
                 blnNameChecked = True
             Else MessageBox.Show("Alphanumeric characters only.", "CAN'T BRICK THIS ONE!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                intNameCount = strName.Length - 1
             End If
         Next
         Return (blnNameChecked = True)

@@ -10,9 +10,9 @@ Public Class frmCharacter
         Dim intDescLine As Integer
         lstDesc.Items.Clear()
         Select Case strClass
-            Case "StreetSam"
+            Case "Street Samurai"
                 intDescLine = 0
-            Case "GunBunny"
+            Case "Gun-Bunny"
                 intDescLine = 1
             Case "Decker"
                 intDescLine = 2
@@ -78,11 +78,17 @@ Public Class frmCharacter
     Private Sub btnLaunch_Click(sender As Object, e As EventArgs) Handles btnLaunch.Click
         'This generates the derived stats, stores the character name, and launches the character-debug pseudo-gameplay form.
         strName = txtName.Text
-        If blnStatsChecked = True Then
-            statgen()
-        Else
-            MessageBox.Show("Please select a class.")
-        End If
+        Try
+            If blnStatsChecked = True Then
+                statgen()
+                'This sets CurrentHealth to be equal to MaxHealth, to prevent an instant failstate.
+                intCurrentHealth = intMaxHealth
+            Else
+                MessageBox.Show("Please select a class.")
+            End If
+        Catch
+        End Try
+
         NameCheck()
         If blnNameChecked = True And blnStatsChecked = True Then
             Me.Close()
