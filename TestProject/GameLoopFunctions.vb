@@ -42,12 +42,15 @@
     Public Function tghUp()
         intToughness += 1
         intCurrentHealth += 3
+        intMaxHealth = intToughness * 3 + intHPBonus - intHPMalus
+        HPcheck()
         Return (intToughness)
     End Function
 
     'Toughness decrease function.
     Public Function tghDown()
         intToughness -= 1
+        intMaxHealth = intToughness * 3 + intHPBonus - intHPMalus
         HPcheck()
         Return (intToughness)
     End Function
@@ -89,7 +92,7 @@
     'Health check (death/overheal)
     Public Function HPcheck()
         Select Case intCurrentHealth
-            Case 0
+            Case <= 0
                 MessageBox.Show("You're dead...", "0xDEADBEEF", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Form.ActiveForm.Close()
                 intCurrentHealth = Nothing
@@ -105,7 +108,7 @@
     Public Function HPup()
         intHPBonus += 1
         intCurrentHealth += 1
-        Return (intCurrentHealth)
+        Return (intHPBonus)
     End Function
 
     'Lowers Max HP - if current HP is lower than Max HP, current HP is not affected
@@ -114,6 +117,6 @@
         If intCurrentHealth > intMaxHealth Then
             intCurrentHealth = intMaxHealth
         End If
-        Return (intCurrentHealth)
+        Return (intHPMalus)
     End Function
 End Module

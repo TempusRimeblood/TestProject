@@ -97,13 +97,13 @@
     End Sub
 
     Private Sub updatestats()
+        lblMaxHP.Text = intMaxHealth.ToString
         intCritical = (intAgility * 2) + intLuck
         lblAgility.Text = intAgility.ToString
         lblStrength.Text = intStrength.ToString
         lblIntelligence.Text = intIntelligence.ToString
         lblToughness.Text = intToughness.ToString
         lblCurrHP.Text = intCurrentHealth.ToString
-        lblMaxHP.Text = intMaxHealth.ToString
         lblLuck.Text = intLuck.ToString
         lblCrit.Text = (intCritical / 100).ToString("p")
     End Sub
