@@ -50,7 +50,6 @@
     Private Sub btnTghUp_Click(sender As Object, e As EventArgs) Handles btnTghUp.Click
         tghUp()
         updatestats()
-        intMaxHealth = (intToughness * 3) + intHPBonus - intHPMalus
         lblCurrHP.Text = intCurrentHealth.ToString
         HPcheck()
         stsFeedLbl.Text = "You feel tougher."
@@ -59,7 +58,6 @@
     Private Sub btnTghDown_Click(sender As Object, e As EventArgs) Handles btnTghDown.Click
         tghDown()
         updatestats()
-        intMaxHealth = (intToughness * 3) + intHPBonus - intHPMalus
         lblCurrHP.Text = intCurrentHealth.ToString
         HPcheck()
         stsFeedLbl.Text = "You feel more fragile."

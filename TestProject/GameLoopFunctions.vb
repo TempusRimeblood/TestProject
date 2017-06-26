@@ -108,12 +108,14 @@
     Public Function HPup()
         intHPBonus += 1
         intCurrentHealth += 1
+        intMaxHealth = (intToughness * 3) + intHPBonus - intHPMalus
         Return (intHPBonus)
     End Function
 
     'Lowers Max HP - if current HP is lower than Max HP, current HP is not affected
     Public Function HPDown()
         intHPMalus += 1
+        intMaxHealth = (intToughness * 3) + intHPBonus - intHPMalus
         If intCurrentHealth > intMaxHealth Then
             intCurrentHealth = intMaxHealth
         End If
