@@ -119,5 +119,9 @@
         updatestats()
     End Sub
 
-
+    Private Sub btnAtkTest_Click(sender As Object, e As EventArgs) Handles btnAtkTest.Click
+        AttackCheck()
+        HitReport()
+        stsFeedLbl.Text = strHitReport
+    End Sub
 End Class
