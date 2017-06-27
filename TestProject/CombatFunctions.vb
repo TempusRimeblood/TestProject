@@ -6,10 +6,10 @@
     Public intToCritRoll As Integer ' This is the roll, if the attack hits, to determine a critical hit
     Public blnIsCrit As Boolean ' This determines if the hit is critical
     Public intDmgRoll As Integer ' This is the damage roll
-    Public intTotalDamage As Integer ' This is the total damage dealt.
+    Public intTotalDamage As Integer ' This is the total damage dealt, which gets calculated by adding things like weapon values et al. To be implemented later.
     Public strHitReport As String ' This is the hit/damage report.
 
-    Public Sub AttackCheck()
+    Public Function AttackCheck(intAgility As Integer, intStrength As Integer) As Integer
 
         blnIsHit = False
         blnIsCrit = False
@@ -32,10 +32,11 @@
 
             End If
         End If
+        Return (intDmgRoll)
 
-    End Sub
+    End Function
 
-    Public Function HitReport()
+    Public Function HitReport() As String
         strHitReport = String.Empty
         If blnIsHit = True And blnIsCrit = True Then
             strHitReport = "You critically strike for " & intDmgRoll & " damage!"
