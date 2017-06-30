@@ -1,15 +1,14 @@
 ﻿Imports System.IO
 
 Public Class frmCharacter
-    Private Sub frmCharacter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Public Sub frmCharacter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     End Sub
 
     Public Sub ReadClass()
         Dim strDescText As String
         Dim intDescLine As Integer
         lstDesc.Items.Clear()
-        Select Case strClass
+        Select Case protag.strClass
             Case "Street Samurai"
                 intDescLine = 0
             Case "Gun-Bunny"
@@ -24,73 +23,73 @@ Public Class frmCharacter
     End Sub
 
     Private Sub btnStreetSam_CheckedChanged(sender As Object, e As EventArgs) Handles btnStreetSam.CheckedChanged
-        blnStatsChecked = False
-        blnStatsMade = False
-        strClass = "Street Samurai"
-        StatCheck()
+        protag.blnStatsChecked = False
+        protag.blnStatsMade = False
+        protag.strClass = "Street Samurai"
+        protag.StatCheck()
         ReadClass()
-        lblAgility.Text = intAgility.ToString
-        lblIntelligence.Text = intIntelligence.ToString
-        lblStrength.Text = intStrength.ToString
-        lblToughness.Text = intToughness.ToString
-        lblHP.Text = intMaxHealth.ToString
+        lblAgility.Text = protag.intAgility.ToString
+        lblIntelligence.Text = protag.intIntelligence.ToString
+        lblStrength.Text = protag.intStrength.ToString
+        lblToughness.Text = protag.intToughness.ToString
+        lblHP.Text = protag.intMaxHealth.ToString
     End Sub
 
     Private Sub btnGunBunny_CheckedChanged(sender As Object, e As EventArgs) Handles btnGunBunny.CheckedChanged
-        blnStatsChecked = False
-        blnStatsMade = False
-        strClass = "Gun-Bunny"
-        StatCheck()
+        protag.blnStatsChecked = False
+        protag.blnStatsMade = False
+        protag.strClass = "Gun-Bunny"
+        protag.StatCheck()
         ReadClass()
-        lblAgility.Text = intAgility.ToString
-        lblIntelligence.Text = intIntelligence.ToString
-        lblStrength.Text = intStrength.ToString
-        lblToughness.Text = intToughness.ToString
-        lblHP.Text = intMaxHealth.ToString
+        lblAgility.Text = protag.intAgility.ToString
+        lblIntelligence.Text = protag.intIntelligence.ToString
+        lblStrength.Text = protag.intStrength.ToString
+        lblToughness.Text = protag.intToughness.ToString
+        lblHP.Text = protag.intMaxHealth.ToString
     End Sub
 
     Private Sub btnDecker_CheckedChanged(sender As Object, e As EventArgs) Handles btnDecker.CheckedChanged
-        blnStatsChecked = False
-        blnStatsMade = False
-        strClass = "Decker"
-        StatCheck()
+        protag.blnStatsChecked = False
+        protag.blnStatsMade = False
+        protag.strClass = "Decker"
+        protag.StatCheck()
         ReadClass()
-        lblAgility.Text = intAgility.ToString
-        lblIntelligence.Text = intIntelligence.ToString
-        lblStrength.Text = intStrength.ToString
-        lblToughness.Text = intToughness.ToString
-        lblHP.Text = intMaxHealth.ToString
+        lblAgility.Text = protag.intAgility.ToString
+        lblIntelligence.Text = protag.intIntelligence.ToString
+        lblStrength.Text = protag.intStrength.ToString
+        lblToughness.Text = protag.intToughness.ToString
+        lblHP.Text = protag.intMaxHealth.ToString
     End Sub
 
     Private Sub btnTank_CheckedChanged(sender As Object, e As EventArgs) Handles btnTank.CheckedChanged
-        blnStatsChecked = False
-        blnStatsMade = False
-        strClass = "Tank"
-        StatCheck()
+        protag.blnStatsChecked = False
+        protag.blnStatsMade = False
+        protag.strClass = "Tank"
+        protag.StatCheck()
         ReadClass()
-        lblAgility.Text = intAgility.ToString
-        lblIntelligence.Text = intIntelligence.ToString
-        lblStrength.Text = intStrength.ToString
-        lblToughness.Text = intToughness.ToString
-        lblHP.Text = intMaxHealth.ToString
+        lblAgility.Text = protag.intAgility.ToString
+        lblIntelligence.Text = protag.intIntelligence.ToString
+        lblStrength.Text = protag.intStrength.ToString
+        lblToughness.Text = protag.intToughness.ToString
+        lblHP.Text = protag.intMaxHealth.ToString
     End Sub
 
     Private Sub btnLaunch_Click(sender As Object, e As EventArgs) Handles btnLaunch.Click
         'This generates the derived stats, stores the character name, and launches the character-debug pseudo-gameplay form.
-        strName = txtName.Text
+        protag.strName = txtName.Text
         Try
-            If blnStatsChecked = True Then
-                statgen()
+            If protag.blnStatsChecked = True Then
+                protag.statgen()
                 'This sets CurrentHealth to be equal to MaxHealth, to prevent an instant failstate.
-                intCurrentHealth = intMaxHealth
+                protag.intCurrentHealth = protag.intMaxHealth
             Else
                 MessageBox.Show("Please select a class.")
             End If
         Catch
         End Try
 
-        NameCheck()
-        If blnNameChecked = True And blnStatsChecked = True Then
+        protag.NameCheck()
+        If protag.blnNameChecked = True And protag.blnStatsChecked = True Then
             Me.Close()
             frmCharacterDebug.Show()
         End If

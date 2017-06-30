@@ -48,5 +48,20 @@
         Return (strHitReport)
     End Function
 
+    'Health check (death/overheal)
+    Public Function HPcheck(intCurrentHealth As Integer, intMaxHealth As Integer)
+        Select Case intCurrentHealth
+            Case <= 0
+                MessageBox.Show("You're dead...", "0xDEADBEEF", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Form.ActiveForm.Close()
+                intCurrentHealth = Nothing
+                intMaxHealth = Nothing
+                frmMain.Show()
+            Case > intMaxHealth
+                intCurrentHealth = intMaxHealth
+        End Select
+        Return (intCurrentHealth)
+    End Function
+
 
 End Module
