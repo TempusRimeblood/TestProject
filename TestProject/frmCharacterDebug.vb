@@ -5,8 +5,8 @@
         lblStrength.Text = protag.intStrength.ToString
         lblIntelligence.Text = protag.intIntelligence.ToString
         lblToughness.Text = protag.intToughness.ToString
-        lblCurrHP.Text = protag.intCurrentHealth.ToString
-        lblMaxHP.Text = protag.intMaxHealth.ToString
+        lblCurrHP.Text = protag.intCurrentHP.ToString
+        lblMaxHP.Text = protag.intMaxHP.ToString
         lblLuck.Text = protag.intLuck.ToString
         lblCrit.Text = (protag.intCritical / 100).ToString("p")
     End Sub
@@ -50,24 +50,24 @@
     Private Sub btnTghUp_Click(sender As Object, e As EventArgs) Handles btnTghUp.Click
         protag.tghUp()
         updatestats()
-        lblCurrHP.Text = protag.intCurrentHealth.ToString
-        HPcheck(protag.intCurrentHealth, protag.intMaxHealth)
+        lblCurrHP.Text = protag.intCurrentHP.ToString
+        playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
         stsFeedLbl.Text = "You feel tougher."
     End Sub
 
     Private Sub btnTghDown_Click(sender As Object, e As EventArgs) Handles btnTghDown.Click
         protag.tghDown()
         updatestats()
-        lblCurrHP.Text = protag.intCurrentHealth.ToString
-        HPcheck(protag.intCurrentHealth, protag.intMaxHealth)
+        lblCurrHP.Text = protag.intCurrentHP.ToString
+        playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
         stsFeedLbl.Text = "You feel more fragile."
     End Sub
 
     Private Sub btnHurt_Click(sender As Object, e As EventArgs) Handles btnHurt.Click
         protag.debugHurt()
-        HPcheck(protag.intCurrentHealth, protag.intMaxHealth)
-        lblCurrHP.Text = protag.intCurrentHealth.ToString
-        Select Case protag.intCurrentHealth
+        playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
+        lblCurrHP.Text = protag.intCurrentHP.ToString
+        Select Case protag.intCurrentHP
             Case > 0
                 stsFeedLbl.Text = "Ouch! You lose 1 HP."
             Case 0
@@ -77,50 +77,51 @@
 
     Private Sub btnHeal_Click(sender As Object, e As EventArgs) Handles btnHeal.Click
         protag.debugHeal()
-        HPcheck(protag.intCurrentHealth, protag.intMaxHealth)
-        lblCurrHP.Text = protag.intCurrentHealth.ToString
-        Select Case protag.intCurrentHealth
-            Case < protag.intMaxHealth
+        playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
+        lblCurrHP.Text = protag.intCurrentHP.ToString
+        Select Case protag.intCurrentHP
+            Case < protag.intMaxHP
                 stsFeedLbl.Text = "Hooray! You gain 1 HP."
-            Case >= protag.intMaxHealth
+            Case >= protag.intMaxHP
                 stsFeedLbl.Text = "You have all your HP."
         End Select
     End Sub
 
     Private Sub btnKill_Click(sender As Object, e As EventArgs) Handles btnKill.Click
         protag.debugKill()
-        lblCurrHP.Text = protag.intCurrentHealth.ToString
-        HPcheck(protag.intCurrentHealth, protag.intMaxHealth)
+        lblCurrHP.Text = protag.intCurrentHP.ToString
+        playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
         stsFeedLbl.Text = "You are dead!"
     End Sub
 
     Private Sub updatestats()
-        lblMaxHP.Text = protag.intMaxHealth.ToString
+        lblMaxHP.Text = protag.intMaxHP.ToString
         protag.intCritical = (protag.intAgility * 2) + protag.intLuck
         lblAgility.Text = protag.intAgility.ToString
         lblStrength.Text = protag.intStrength.ToString
         lblIntelligence.Text = protag.intIntelligence.ToString
         lblToughness.Text = protag.intToughness.ToString
-        lblCurrHP.Text = protag.intCurrentHealth.ToString
+        lblCurrHP.Text = protag.intCurrentHP.ToString
         lblLuck.Text = protag.intLuck.ToString
         lblCrit.Text = (protag.intCritical / 100).ToString("p")
     End Sub
 
     Private Sub btnHPup_Click(sender As Object, e As EventArgs) Handles btnHPup.Click
         protag.HPup()
-        HPcheck(protag.intCurrentHealth, protag.intMaxHealth)
+        playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
         updatestats()
 
     End Sub
 
     Private Sub btnHPDown_Click(sender As Object, e As EventArgs) Handles btnHPDown.Click
         protag.HPDown()
-        HPcheck(protag.intCurrentHealth, protag.intMaxHealth)
+        playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
         updatestats()
     End Sub
 
     Private Sub btnAtkTest_Click(sender As Object, e As EventArgs) Handles btnAtkTest.Click
         AttackCheck(protag.intAgility, protag.intStrength)
+        DamageCheck(Mobs(intMobsCreated).intCurrentHP, intDmgRoll)
         HitReport()
         stsFeedLbl.Text = strHitReport
     End Sub

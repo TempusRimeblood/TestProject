@@ -15,8 +15,8 @@
     Public intLuck As Integer 'This is Luck.  It is a hidden stat and will be implemented later.  Possibly for crit chance.
 
     'These variables are for derived stats.
-    Public intMaxHealth As Integer 'Maximum HP, affected by Toughness and items.
-    Public intCurrentHealth As Integer 'Current HP, affected by whether the player has been attacked successfully.
+    Public intMaxHP As Integer 'Maximum HP, affected by Toughness and items.
+    Public intCurrentHP As Integer 'Current HP, affected by whether the player has been attacked successfully.
     Public intCritical As Integer 'Critical Hit Chance, affected by the equipped weapon and Luck.
     Public intHPBonus As Integer 'HP Bonus, applied by items and events that boost Max HP without boosting Toughness
     Public intHPMalus As Integer 'HP Malus, applied by items and events that lower Max HP without lowering Toughness
@@ -38,28 +38,28 @@
                 intAgility = 5
                 intToughness = 5
                 intIntelligence = 2
-                intMaxHealth = intToughness * 3
+                intMaxHP = intToughness * 3
                 blnStatsChecked = True
             Case "Gun-Bunny"
                 intStrength = 2
                 intAgility = 8
                 intToughness = 5
                 intIntelligence = 5
-                intMaxHealth = intToughness * 3
+                intMaxHP = intToughness * 3
                 blnStatsChecked = True
             Case "Decker"
                 intStrength = 5
                 intAgility = 5
                 intIntelligence = 8
                 intToughness = 2
-                intMaxHealth = intToughness * 3
+                intMaxHP = intToughness * 3
                 blnStatsChecked = True
             Case "Tank"
                 intToughness = 8
                 intStrength = 5
                 intAgility = 2
                 intIntelligence = 5
-                intMaxHealth = intToughness * 3
+                intMaxHP = intToughness * 3
                 blnStatsChecked = True
         End Select
         Return (blnStatsChecked = True)
@@ -146,17 +146,17 @@
     'Toughness increase function.
     Public Function tghUp()
         intToughness += 1
-        intCurrentHealth += 3
-        intMaxHealth = intToughness * 3 + intHPBonus - intHPMalus
-        HPcheck(protag.intCurrentHealth, protag.intMaxHealth)
+        intCurrentHP += 3
+        intMaxHP = intToughness * 3 + intHPBonus - intHPMalus
+        playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
         Return (intToughness)
     End Function
 
     'Toughness decrease function.
     Public Function tghDown()
         intToughness -= 1
-        intMaxHealth = intToughness * 3 + intHPBonus - intHPMalus
-        HPcheck(protag.intCurrentHealth, protag.intMaxHealth)
+        intMaxHP = intToughness * 3 + intHPBonus - intHPMalus
+        playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
         Return (intToughness)
     End Function
 
@@ -174,40 +174,40 @@
 
     'Debug hurt function
     Public Function debugHurt()
-        intCurrentHealth -= 1
-        Return (intCurrentHealth)
+        intCurrentHP -= 1
+        Return (intCurrentHP)
     End Function
 
     'Debug heal function
     Public Function debugHeal()
-        If intCurrentHealth < intMaxHealth Then
-            intCurrentHealth += 1
+        If intCurrentHP < intMaxHP Then
+            intCurrentHP += 1
         Else
-            intCurrentHealth += 0
+            intCurrentHP += 0
         End If
-        Return (intCurrentHealth)
+        Return (intCurrentHP)
     End Function
 
     'Debug kill function
     Public Function debugKill()
-        intCurrentHealth = 0
-        Return (intCurrentHealth)
+        intCurrentHP = 0
+        Return (intCurrentHP)
     End Function
 
     'Raises Max HP and current HP
     Public Function HPup()
         intHPBonus += 1
-        intCurrentHealth += 1
-        intMaxHealth = (intToughness * 3) + intHPBonus - intHPMalus
+        intCurrentHP += 1
+        intMaxHP = (intToughness * 3) + intHPBonus - intHPMalus
         Return (intHPBonus)
     End Function
 
     'Lowers Max HP - if current HP is lower than Max HP, current HP is not affected
     Public Function HPDown()
         intHPMalus += 1
-        intMaxHealth = (intToughness * 3) + intHPBonus - intHPMalus
-        If intCurrentHealth > intMaxHealth Then
-            intCurrentHealth = intMaxHealth
+        intMaxHP = (intToughness * 3) + intHPBonus - intHPMalus
+        If intCurrentHP > intMaxHP Then
+            intCurrentHP = intMaxHP
         End If
         Return (intHPMalus)
     End Function

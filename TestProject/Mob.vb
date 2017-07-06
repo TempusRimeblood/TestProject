@@ -7,7 +7,9 @@
     Public intToughness As Integer ' Toughness
     Public intCurrentHP As Integer 'Current HP
     Public intMaxHP As Integer 'Max HP
+    Public blnIsTarget As Boolean
     Public blnMonsterMade 'Boolean value to confirm stats are made
+    Public blnMonsterKilled = False 'Boolean value to determine if the monster has been killed. Starts as False.
 
     'Attempting to add function to randomize intClassDetermine.
     Public Function chooseclass()
@@ -23,7 +25,7 @@
 
     End Function
 
-    Public Function monsterstatgen()
+    Public Function monsterstatgen() ' This generates the monster's stats, scaling based on player stats.
         Select Case strClass
             Case "Melee"
                 Randomize()
@@ -49,6 +51,15 @@
         Return (blnMonsterMade)
     End Function
 
+    Public Sub monsterHPcheck() ' This checks the mob's HP to determine if it is dead or not.
+        Select Case intCurrentHP
+            Case > 0
+            Case <= 0
+                blnMonsterKilled = True
+                strKillFeed = "You killed the " & strName & "!"
+                Me.Finalize()
+        End Select
+    End Sub
 
 
 End Class

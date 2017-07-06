@@ -32,7 +32,7 @@ Public Class frmCharacter
         lblIntelligence.Text = protag.intIntelligence.ToString
         lblStrength.Text = protag.intStrength.ToString
         lblToughness.Text = protag.intToughness.ToString
-        lblHP.Text = protag.intMaxHealth.ToString
+        lblHP.Text = protag.intMaxHP.ToString
     End Sub
 
     Private Sub btnGunBunny_CheckedChanged(sender As Object, e As EventArgs) Handles btnGunBunny.CheckedChanged
@@ -45,7 +45,7 @@ Public Class frmCharacter
         lblIntelligence.Text = protag.intIntelligence.ToString
         lblStrength.Text = protag.intStrength.ToString
         lblToughness.Text = protag.intToughness.ToString
-        lblHP.Text = protag.intMaxHealth.ToString
+        lblHP.Text = protag.intMaxHP.ToString
     End Sub
 
     Private Sub btnDecker_CheckedChanged(sender As Object, e As EventArgs) Handles btnDecker.CheckedChanged
@@ -58,7 +58,7 @@ Public Class frmCharacter
         lblIntelligence.Text = protag.intIntelligence.ToString
         lblStrength.Text = protag.intStrength.ToString
         lblToughness.Text = protag.intToughness.ToString
-        lblHP.Text = protag.intMaxHealth.ToString
+        lblHP.Text = protag.intMaxHP.ToString
     End Sub
 
     Private Sub btnTank_CheckedChanged(sender As Object, e As EventArgs) Handles btnTank.CheckedChanged
@@ -71,7 +71,7 @@ Public Class frmCharacter
         lblIntelligence.Text = protag.intIntelligence.ToString
         lblStrength.Text = protag.intStrength.ToString
         lblToughness.Text = protag.intToughness.ToString
-        lblHP.Text = protag.intMaxHealth.ToString
+        lblHP.Text = protag.intMaxHP.ToString
     End Sub
 
     Private Sub btnLaunch_Click(sender As Object, e As EventArgs) Handles btnLaunch.Click
@@ -81,7 +81,7 @@ Public Class frmCharacter
             If protag.blnStatsChecked = True Then
                 protag.statgen()
                 'This sets CurrentHealth to be equal to MaxHealth, to prevent an instant failstate.
-                protag.intCurrentHealth = protag.intMaxHealth
+                protag.intCurrentHP = protag.intMaxHP
             Else
                 MessageBox.Show("Please select a class.")
             End If

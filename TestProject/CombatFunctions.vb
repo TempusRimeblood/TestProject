@@ -8,8 +8,15 @@
     Public intDmgRoll As Integer ' This is the damage roll
     Public intTotalDamage As Integer ' This is the total damage dealt, which gets calculated by adding things like weapon values et al. To be implemented later.
     Public strHitReport As String ' This is the hit/damage report.
+    Public strKillFeed As String ' This is the "kill feed," used to display a line if the monster has been killed.
 
     Public Function AttackCheck(intAgility As Integer, intStrength As Integer) As Integer
+
+        If Mobs(intMobsCreated).blnMonsterKilled = False Then
+            MessageBox.Show("There is nothing to attack here.", "NO TARGET", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            strHitReport = "You can't attack the darkness."
+            intDmgRoll = 0
+        End If
 
         blnIsHit = False
         blnIsCrit = False
@@ -36,12 +43,17 @@
 
     End Function
 
+    Public Function DamageCheck(ByRef intCurrentHP As Integer, intDmgRoll As Integer) As Integer
+        intCurrentHP -= intDmgRoll
+        Return (intCurrentHP)
+    End Function
+
     Public Function HitReport() As String
         strHitReport = String.Empty
         If blnIsHit = True And blnIsCrit = True Then
-            strHitReport = "You critically strike for " & intDmgRoll & " damage!"
+            strHitReport = "You critically strike for " & intDmgRoll & " damage!" & " " & strKillFeed
         ElseIf blnIsHit = True And blnIsCrit = False Then
-            strHitReport = "You strike for " & intDmgRoll & " damage!"
+            strHitReport = "You strike for " & intDmgRoll & " damage!" & " " & strKillFeed
         ElseIf blnIsHit = False Then
             strHitReport = "You missed! Take another swing!"
         End If
@@ -49,18 +61,18 @@
     End Function
 
     'Health check (death/overheal)
-    Public Function HPcheck(intCurrentHealth As Integer, intMaxHealth As Integer)
-        Select Case intCurrentHealth
+    Public Function playerHPcheck(intCurrentHP As Integer, intMaxHP As Integer)
+        Select Case intCurrentHP
             Case <= 0
                 MessageBox.Show("You're dead...", "0xDEADBEEF", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Form.ActiveForm.Close()
-                intCurrentHealth = Nothing
-                intMaxHealth = Nothing
+                intCurrentHP = Nothing
+                intMaxHP = Nothing
                 frmMain.Show()
-            Case > intMaxHealth
-                intCurrentHealth = intMaxHealth
+            Case > intMaxHP
+                intCurrentHP = intMaxHP
         End Select
-        Return (intCurrentHealth)
+        Return (intCurrentHP)
     End Function
 
 
