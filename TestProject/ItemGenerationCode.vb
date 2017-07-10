@@ -90,7 +90,7 @@ Module ItemGenerationCode
     Public Sub RangedGen()
         Gun(intRangedCreated) = New RangedWeapon
 
-        Dim strPath, strRcvr(60) As String
+        Dim strPath, strRcvr(60), strMag(4), strStock(5), str As String
         Dim intX As Integer = 1
         Dim reader As StreamReader
         strPath = "..\..\txt\upprrcvr.txt"
@@ -113,6 +113,18 @@ Module ItemGenerationCode
             Case >= 46, <= 60
                 Gun(intRangedCreated).intWeaponType = 4 ' Heavy Weapon
         End Select
+        If Gun(intRangedCreated).intWeaponType = 1 Then
+            intX = 1
+            Randomize()
+            strPath = "..\..\txt\magazine.txt"
+            reader = File.OpenText(strPath)
+            Do While reader.Peek <> reader.EndOfStream
+                strMag(intX) = reader.ReadLine
+                intX += 1
+            Loop
+            Gun(intRangedCreated).intMagazine = strMag(4 * Rnd() + 1)
+            Gun(intRangedCreated).strMagazine = strMag(4 * Rnd(-1) + 1)
+        End If
         intRangedCreated += 1
     End Sub
 End Module
