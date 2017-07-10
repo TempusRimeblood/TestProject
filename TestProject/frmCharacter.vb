@@ -96,4 +96,5 @@ Public Class frmCharacter
 
 
     End Sub
+
 End Class

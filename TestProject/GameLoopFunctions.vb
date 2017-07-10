@@ -1,4 +1,6 @@
-﻿Module GameLoopFunctions
+﻿Imports System.IO
+
+Module GameLoopFunctions
     'This module exists to handle gameloop functions.
 
     Public Sub monstergen() 'Subroutine to create a mob for the debug function.
