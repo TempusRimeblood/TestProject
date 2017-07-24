@@ -7,14 +7,14 @@ Public Class RangedWeapon
     Public intWeaponType As Integer 'Weapon Type - this is the type of weapon determined by the Upper Reciever
     Public intMagazine As Integer 'Magazine - mostly fluff, to be implemented if there is an ammo system implemented
     Public strMagazine As String
-    Public intStock As Integer 'Stock - this is going to affect the weapon's accuracy rating, if the weapon can have a stock
-    Public strStock As String
-    Public intBarrel As Integer 'Barrel mod - this will have different effects when event generation becomes a thing
-    Public strBarrel As String
-    Public intUnder As Integer 'Underbarrel mod - on weapons that support this, different effects, possibly even melee weapon.
-    Public strUnder As String
-    Public intSight As Integer 'Sight mod - this affects the weapon's accuracy
-    Public strSight As String
+    Public intWpnStock As Integer 'Stock - this is going to affect the weapon's accuracy rating, if the weapon can have a stock
+    Public strWpnStock As String
+    Public intWpnBarrel As Integer 'Barrel mod - this will have different effects when event generation becomes a thing
+    Public strWpnBarrel As String
+    Public intWpnUnder As Integer 'Underbarrel mod - on weapons that support this, different effects, possibly even melee weapon.
+    Public strWpnUnder As String
+    Public intWpnSight As Integer 'Sight mod - this affects the weapon's accuracy
+    Public strWpnSight As String
     Public strName As String 'Weapon name - this will be aggregated from the various mod strings e.g. "Smartlinked Ergo-Grip Riot Shotgun"
 
     'These are the variables that affect stats and derived stats
@@ -50,7 +50,7 @@ Public Class RangedWeapon
                 intAccuracyMod = -15
                 intCritMod = 4
         End Select
-        Select Case intStock
+        Select Case intWpnStock
             Case 1 ' Null value, represents a default stock/lack thereof
                 intAccuracyMod += 0
             Case 2 ' Recoil-Absorbing
@@ -64,7 +64,7 @@ Public Class RangedWeapon
             Case 6 ' Hip-Slung
                 intAccuracyMod += 7
         End Select
-        Select Case intSight
+        Select Case intWpnSight
             Case 1 ' Null value, represents a default iron-sight
                 intAccuracyMod += 0
             Case 2 ' Red Dot Sight
@@ -86,7 +86,7 @@ Public Class RangedWeapon
             Case 10 ' Extended Battle Rifle Scope
                 intAccuracyMod += 15
         End Select
-        Select Case intBarrel
+        Select Case intWpnBarrel
             Case 1 ' Null value, represents no barrel modification
                 intWpnDmgMin += 0
                 intWpnDmgMax += 0
@@ -129,7 +129,7 @@ Public Class RangedWeapon
                         intAccuracyMod += 10
                 End Select
         End Select
-        Select Case intUnder
+        Select Case intWpnUnder
             Case 1 ' Null value, represents no underbarrel attachment
             Case 2 ' Ergonomic Grip
                 Select Case intWeaponType
@@ -171,4 +171,290 @@ Public Class RangedWeapon
         End Select
     End Sub
 
+    Public Sub ARGen()
+        Dim strPath, strRcvr(60), strMag(5), strStock(6), strSight(10), strBarrel(7), strUnder(7) As String
+        Dim intX As Integer
+        Dim reader As StreamReader
+        'This determines the magazine type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\magazine.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strMag(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        intMagazine = strMag(5 * Rnd() + 1)
+        strMagazine = strMag(5 * Rnd(-1) + 1)
+
+        'This determines the stock type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\stock.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strStock(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        intWpnStock = strStock(6 * Rnd() + 1)
+        strWpnStock = strStock(6 * Rnd(-1) + 1)
+
+        'This determines the sight type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\sight.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strSight(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        intWpnSight = strSight(10 * Rnd() + 1)
+        strWpnSight = strSight(10 * Rnd(-1) + 1)
+
+        'This determines the barrel modification
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\barrel.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strBarrel(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        intWpnBarrel = strBarrel(7 * Rnd() + 1)
+        strWpnBarrel = strBarrel(7 * Rnd(-1) + 1)
+
+        'This is the underbarrel modification
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\under.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strUnder(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        intWpnUnder = strUnder(7 * Rnd() + 1)
+        strWpnUnder = strUnder(7 * Rnd(-1) + 1)
+
+        'Name generation
+        strName = strWpnStock & " " & strWpnSight & " " & strMagazine &
+            " " & strWpnUnder & " " & strWpnBarrel & " " & strUpprRcvr
+    End Sub
+
+    Public Sub SGgen() 'Shotgun generation
+        Dim strPath, strRcvr(60), strMag(5), strStock(6), strSight(10), strBarrel(7), strUnder(7) As String
+        Dim intX As Integer
+        Dim reader As StreamReader
+        'This determines the magazine type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\magazine.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strMag(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until intMagazine <> 4 And intMagazine <> 5
+            intMagazine = strMag(5 * Rnd() + 1)
+            strMagazine = strMag(5 * Rnd(-1) + 1)
+        Loop
+
+        'This determines the stock type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\stock.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strStock(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        intWpnStock = strStock(6 * Rnd() + 1)
+        strWpnStock = strStock(6 * Rnd(-1) + 1)
+
+        'This determines the sight type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\sight.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strSight(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until intWpnSight < 7
+            intWpnSight = strSight(10 * Rnd() + 1)
+            strWpnSight = strSight(10 * Rnd(-1) + 1)
+        Loop
+
+        'This determines the barrel modification
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\barrel.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strBarrel(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until intWpnBarrel < 5
+            intWpnBarrel = strBarrel(7 * Rnd() + 1)
+            strWpnBarrel = strBarrel(7 * Rnd(-1) + 1)
+        Loop
+
+        'This is the underbarrel modification
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\under.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strUnder(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until intWpnUnder <> 6
+            intWpnUnder = strUnder(7 * Rnd() + 1)
+            strWpnUnder = strUnder(7 * Rnd(-1) + 1)
+        Loop
+
+        'Name generation
+        strName = strWpnStock & " " & strWpnSight & " " & strMagazine &
+            " " & strWpnUnder & " " & strWpnBarrel & " " & strUpprRcvr
+    End Sub
+
+    Public Sub HGgen() 'Handgun generation
+        Dim strPath, strRcvr(60), strMag(5), strStock(6), strSight(10), strBarrel(7), strUnder(7) As String
+        Dim intX As Integer
+        Dim reader As StreamReader
+        'This determines the magazine type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\magazine.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strMag(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until intMagazine <> 4
+            intMagazine = strMag(5 * Rnd() + 1)
+            strMagazine = strMag(5 * Rnd(-1) + 1)
+        Loop
+
+        'Stock work - this is because pistols cannot have stocks in-game
+        intWpnStock = 1
+        strWpnStock = "NULL"
+
+        'This determines the sight type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\sight.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strSight(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until intWpnSight < 5
+            intWpnSight = strSight(10 * Rnd() + 1)
+            strWpnSight = strSight(10 * Rnd(-1) + 1)
+        Loop
+
+        'This determines the barrel modification
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\barrel.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strBarrel(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until intWpnBarrel <> 2 And intWpnBarrel <> 3
+            intWpnBarrel = strBarrel(7 * Rnd() + 1)
+            strWpnBarrel = strBarrel(7 * Rnd(-1) + 1)
+        Loop
+
+        'This is the underbarrel modification
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\under.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strUnder(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until intWpnUnder <> 2 And intWpnUnder <> 3 And intWpnUnder <> 6
+            intWpnUnder = strUnder(7 * Rnd() + 1)
+            strWpnUnder = strUnder(7 * Rnd(-1) + 1)
+        Loop
+
+        'Name generation
+        strName = strWpnStock & " " & strWpnSight & " " & strMagazine &
+            " " & strWpnUnder & " " & strWpnBarrel & " " & strUpprRcvr
+    End Sub
+    Public Sub HVYgen() 'Heavy Weapons generation
+        Dim strPath, strRcvr(60), strMag(5), strStock(6), strSight(10), strBarrel(7), strUnder(7) As String
+        Dim intX As Integer
+        Dim reader As StreamReader
+        'This determines the magazine type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\magazine.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strMag(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until strMagazine <> 4
+            intMagazine = strMag(5 * Rnd() + 1)
+            strMagazine = strMag(5 * Rnd(-1) + 1)
+        Loop
+
+        'This determines the stock type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\stock.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strStock(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        intWpnStock = strStock(6 * Rnd() + 1)
+        strWpnStock = strStock(6 * Rnd(-1) + 1)
+
+        'This determines the sight type
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\sight.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strSight(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        intWpnSight = strSight(10 * Rnd() + 1)
+        strWpnSight = strSight(10 * Rnd(-1) + 1)
+
+        'This determines the barrel modification
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\barrel.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strBarrel(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Do Until intWpnBarrel <> 3 And intWpnBarrel <> 5
+            intWpnBarrel = strBarrel(7 * Rnd() + 1)
+            strWpnBarrel = strBarrel(7 * Rnd(-1) + 1)
+        Loop
+
+        'This is the underbarrel modification
+        intX = 1
+        Randomize()
+        strPath = "..\..\txt\under.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strUnder(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        intWpnUnder = strUnder(7 * Rnd() + 1)
+        strWpnUnder = strUnder(7 * Rnd(-1) + 1)
+
+        'Name generation
+        strName = strWpnStock & " " & strWpnSight & " " & strMagazine &
+            " " & strWpnUnder & " " & strWpnBarrel & " " & strUpprRcvr
+    End Sub
 End Class

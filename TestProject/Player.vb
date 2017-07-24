@@ -21,6 +21,9 @@
     Public intHPBonus As Integer 'HP Bonus, applied by items and events that boost Max HP without boosting Toughness
     Public intHPMalus As Integer 'HP Malus, applied by items and events that lower Max HP without lowering Toughness
 
+    Public intArmor As Integer 'Armor value - this gets subtracted from raw damage during combat checks
+
+
     Public intNameCount As Integer 'Set name counter for character validation
     Public blnNameChecked As Boolean = False 'Verify that name has been checked
 
