@@ -17,7 +17,13 @@ Public Class Mob
     Public MobHelm As New Armor ' Mob armor is the next four variables
     Public MobTorso As New Armor
     Public MobGloves As New Armor
-    Public MobBoots As New Armor
+    Public MobBoots As New Armor '
+    Public intMobArmorValue As Integer ' Mob's armor value - this is subtracted from the incoming damage
+    Public intMobAccuracyMod As Integer ' Accuracy modifier - this will apply to combat functions
+    Public intRangedDamageMin As Integer 'Minimum ranged damage, determined by weapon
+    Public intRangedDamageMax As Integer 'Maximum melee damage, determined by weapon
+    Public intMeleeDamageMin As Integer 'Minimum melee damage, determined by weapon
+    Public intMeleeDamageMax As Integer 'Maximum melee damage, determined by weapon
     Dim blnHasHelmet, blnHasTorso, blnHasBoots, blnHasGloves As Boolean ' These booleans dictate how many pieces of armor an enemy has
 
     'Attempting to add function to randomize intClassDetermine.
@@ -143,13 +149,13 @@ Public Class Mob
                 MobGun.SGgen()
                 MobGun.gunstat()
             Case >= 31, <= 45
-                MobGun.intWeaponType = 3
+                MobGun.intWeaponType = 3 ' Handgun
                 MobGun.HGgen()
-                MobGun.gunstat() ' Handgun
+                MobGun.gunstat()
             Case >= 46, <= 60
-                MobGun.intWeaponType = 4
+                MobGun.intWeaponType = 4 ' Heavy Weapon
                 MobGun.HVYgen()
-                MobGun.gunstat() ' Heavy Weapon
+                MobGun.gunstat()
         End Select
     End Sub
 
@@ -179,5 +185,7 @@ Public Class Mob
             MobTorso.TorsoStats()
             MobTorso.Affixes()
         End If
+
+        intMobArmorValue = MobHelm.intArmorValue + MobTorso.intArmorValue + MobGloves.intArmorValue + MobBoots.intArmorValue
     End Sub
 End Class
