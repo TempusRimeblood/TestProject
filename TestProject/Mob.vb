@@ -12,12 +12,13 @@ Public Class Mob
     Public blnIsTarget As Boolean
     Public blnMonsterMade 'Boolean value to confirm stats are made
     Public blnMonsterKilled = False 'Boolean value to determine if the monster has been killed. Starts as False.
-    Public MobMelee As New MeleeWeapon
-    Public MobGun As New RangedWeapon
-    Public MobHelm As New Armor
+    Public MobMelee As New MeleeWeapon ' Mobs have melee weapons, too
+    Public MobGun As New RangedWeapon ' Mobs can have ranged weapons
+    Public MobHelm As New Armor ' Mob armor is the next four variables
     Public MobTorso As New Armor
     Public MobGloves As New Armor
     Public MobBoots As New Armor
+    Dim blnHasHelmet, blnHasTorso, blnHasBoots, blnHasGloves As Boolean ' These booleans dictate how many pieces of armor an enemy has
 
     'Attempting to add function to randomize intClassDetermine.
     Public Function chooseclass()
@@ -34,50 +35,27 @@ Public Class Mob
     Public Function monsterstatgen() ' This generates the monster's stats, scaling based on player stats.
         Select Case strClass
             Case "Melee"
-                Dim blnHasHelmet, blnHasTorso, blnHasBoots, blnHasGloves As Boolean
-                Dim rng = New Random()
-                blnHasHelmet = rng.Next(0, 2) > 0
-                blnHasBoots = rng.Next(0, 2) > 0
-                blnHasGloves = rng.Next(0, 2) > 0
-                blnHasTorso = rng.Next(0, 2) > 0
                 MonsterMeleeGen()
+                MonsterArmorGen()
                 Randomize()
                 intStrength = ((protag.intStrength + 4) * Rnd() + (protag.intStrength - 2))
                 Randomize()
                 intAgility = ((protag.intAgility + 1) * Rnd() + (protag.intStrength - 3))
                 Randomize()
                 intToughness = ((protag.intToughness + 3) * Rnd() + (protag.intToughness - 1))
-                intMaxHP = intToughness * 3
+                intMaxHP = intToughness * 20
                 intCurrentHP = intMaxHP
-                If blnHasHelmet = True Then
-                    MobHelm.HelmetGen()
-                    MobHelm.HelmetStats()
-                    MobHelm.Affixes()
-                End If
-                If blnHasBoots = True Then
-                    MobBoots.BootsGen()
-                    MobBoots.BootsStats()
-                    MobBoots.Affixes()
-                End If
-                If blnHasGloves = True Then
-                    MobGloves.GloveGen()
-                    MobGloves.GlovesStats()
-                    MobGloves.Affixes()
-                End If
-                If blnHasTorso = True Then
-                    MobTorso.TorsoGen()
-                    MobTorso.TorsoStats()
-                    MobTorso.Affixes()
-                End If
                 blnMonsterMade = True
             Case "Ranged"
+                MonsterRangedGen()
+                MonsterArmorGen()
                 Randomize()
                 intStrength = ((protag.intStrength + 1) * Rnd() + (protag.intStrength - 3))
                 Randomize()
                 intAgility = ((protag.intAgility + 4) * Rnd() + (protag.intStrength - 1))
                 Randomize()
                 intToughness = ((protag.intToughness + 2) * Rnd() + (protag.intToughness - 2))
-                intMaxHP = intToughness * 3
+                intMaxHP = intToughness * 20
                 intCurrentHP = intMaxHP
                 blnMonsterMade = True
         End Select
@@ -173,5 +151,33 @@ Public Class Mob
                 MobGun.HVYgen()
                 MobGun.gunstat() ' Heavy Weapon
         End Select
+    End Sub
+
+    Public Sub MonsterArmorGen()
+        Dim rng = New Random()
+        blnHasHelmet = rng.Next(0, 2) > 0
+        blnHasBoots = rng.Next(0, 2) > 0
+        blnHasGloves = rng.Next(0, 2) > 0
+        blnHasTorso = rng.Next(0, 2) > 0
+        If blnHasHelmet = True Then
+            MobHelm.HelmetGen()
+            MobHelm.HelmetStats()
+            MobHelm.Affixes()
+        End If
+        If blnHasBoots = True Then
+            MobBoots.BootsGen()
+            MobBoots.BootsStats()
+            MobBoots.Affixes()
+        End If
+        If blnHasGloves = True Then
+            MobGloves.GloveGen()
+            MobGloves.GlovesStats()
+            MobGloves.Affixes()
+        End If
+        If blnHasTorso = True Then
+            MobTorso.TorsoGen()
+            MobTorso.TorsoStats()
+            MobTorso.Affixes()
+        End If
     End Sub
 End Class

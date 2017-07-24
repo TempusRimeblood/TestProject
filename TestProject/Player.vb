@@ -41,28 +41,28 @@
                 intAgility = 5
                 intToughness = 5
                 intIntelligence = 2
-                intMaxHP = intToughness * 3
+                intMaxHP = intToughness * 20
                 blnStatsChecked = True
             Case "Gun-Bunny"
                 intStrength = 2
                 intAgility = 8
                 intToughness = 5
                 intIntelligence = 5
-                intMaxHP = intToughness * 3
+                intMaxHP = intToughness * 20
                 blnStatsChecked = True
             Case "Decker"
                 intStrength = 5
                 intAgility = 5
                 intIntelligence = 8
                 intToughness = 2
-                intMaxHP = intToughness * 3
+                intMaxHP = intToughness * 20
                 blnStatsChecked = True
             Case "Tank"
                 intToughness = 8
                 intStrength = 5
                 intAgility = 2
                 intIntelligence = 5
-                intMaxHP = intToughness * 3
+                intMaxHP = intToughness * 20
                 blnStatsChecked = True
         End Select
         Return (blnStatsChecked = True)
@@ -150,7 +150,7 @@
     Public Function tghUp()
         intToughness += 1
         intCurrentHP += 3
-        intMaxHP = intToughness * 3 + intHPBonus - intHPMalus
+        intMaxHP = intToughness * 20 + intHPBonus - intHPMalus
         playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
         Return (intToughness)
     End Function
@@ -158,7 +158,7 @@
     'Toughness decrease function.
     Public Function tghDown()
         intToughness -= 1
-        intMaxHP = intToughness * 3 + intHPBonus - intHPMalus
+        intMaxHP = intToughness * 20 + intHPBonus - intHPMalus
         playerHPcheck(protag.intCurrentHP, protag.intMaxHP)
         Return (intToughness)
     End Function
@@ -201,14 +201,14 @@
     Public Function HPup()
         intHPBonus += 1
         intCurrentHP += 1
-        intMaxHP = (intToughness * 3) + intHPBonus - intHPMalus
+        intMaxHP = (intToughness * 20) + intHPBonus - intHPMalus
         Return (intHPBonus)
     End Function
 
     'Lowers Max HP - if current HP is lower than Max HP, current HP is not affected
     Public Function HPDown()
         intHPMalus += 1
-        intMaxHP = (intToughness * 3) + intHPBonus - intHPMalus
+        intMaxHP = (intToughness * 20) + intHPBonus - intHPMalus
         If intCurrentHP > intMaxHP Then
             intCurrentHP = intMaxHP
         End If
