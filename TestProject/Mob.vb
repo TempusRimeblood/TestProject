@@ -19,7 +19,8 @@ Public Class Mob
     Public MobGloves As New Armor
     Public MobBoots As New Armor '
     Public intMobArmorValue As Integer ' Mob's armor value - this is subtracted from the incoming damage
-    Public intMobAccuracyMod As Integer ' Accuracy modifier - this will apply to combat functions
+    Public intMeleeAccuracyMod As Integer ' Accuracy modifier - this will apply to combat functions
+    Public intRangedAccuracyMod As Integer ' Accuracy modifier - this will apply to combat functions
     Public intRangedDamageMin As Integer 'Minimum ranged damage, determined by weapon
     Public intRangedDamageMax As Integer 'Maximum melee damage, determined by weapon
     Public intMeleeDamageMin As Integer 'Minimum melee damage, determined by weapon
@@ -51,6 +52,14 @@ Public Class Mob
                 intToughness = ((protag.intToughness + 3) * Rnd() + (protag.intToughness - 1))
                 intMaxHP = intToughness * 20
                 intCurrentHP = intMaxHP
+                intMeleeDamageMax = MobMelee.intWpnMaxDamage
+                intMeleeDamageMin = MobMelee.intWpnMinDamage
+                intMeleeAccuracyMod = MobMelee.intAccuracyMod
+                intRangedDamageMax = intAgility * 2
+                intRangedDamageMin = intAgility - 1
+                If intRangedDamageMin <= 0 Then
+                    intRangedDamageMin = 1
+                End If
                 blnMonsterMade = True
             Case "Ranged"
                 MonsterRangedGen()
@@ -63,6 +72,14 @@ Public Class Mob
                 intToughness = ((protag.intToughness + 2) * Rnd() + (protag.intToughness - 2))
                 intMaxHP = intToughness * 20
                 intCurrentHP = intMaxHP
+                intRangedDamageMin = MobGun.intWpnDmgMin
+                intRangedDamageMax = MobGun.intWpnDmgMax
+                intRangedAccuracyMod = MobGun.intAccuracyMod
+                intMeleeDamageMax = intStrength * 3
+                intMeleeDamageMin = intStrength - 2
+                If intMeleeDamageMin <= 0 Then
+                    intMeleeDamageMin = 1
+                End If
                 blnMonsterMade = True
         End Select
         Return (blnMonsterMade)

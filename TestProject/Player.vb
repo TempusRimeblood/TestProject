@@ -23,6 +23,18 @@
 
     Public intArmor As Integer 'Armor value - this gets subtracted from raw damage during combat checks
 
+    'Ranged stats - minimum damage, maximum damage, accuracy mod, crit multiplier
+    Public intRangedMinDmg As Integer
+    Public intRangedMaxDmg As Integer
+    Public intRangedAccMod As Integer
+    Public intRangedCritMod As Integer
+
+    'Melee stats - minimum damage, maximum damage, accuracy mod, crit multiplier
+    Public intMeleeMinDmg As Integer
+    Public intMeleeMaxDmg As Integer
+    Public intMeleeAccMod As Integer
+    Public intMeleeCritMod As Integer
+
 
     Public intNameCount As Integer 'Set name counter for character validation
     Public blnNameChecked As Boolean = False 'Verify that name has been checked
