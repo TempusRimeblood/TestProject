@@ -46,7 +46,7 @@ Public Class Mob
                 Randomize()
                 intStrength = ((protag.intStrength + 4) * Rnd() + (protag.intStrength - 2))
                 Randomize()
-                intAgility = ((protag.intAgility + 1) * Rnd() + (protag.intStrength - 3))
+                intAgility = ((protag.intAgility + 1) * Rnd() + (protag.intAgility - 3))
                 Randomize()
                 intToughness = ((protag.intToughness + 3) * Rnd() + (protag.intToughness - 1))
                 intMaxHP = intToughness * 20
@@ -58,7 +58,7 @@ Public Class Mob
                 Randomize()
                 intStrength = ((protag.intStrength + 1) * Rnd() + (protag.intStrength - 3))
                 Randomize()
-                intAgility = ((protag.intAgility + 4) * Rnd() + (protag.intStrength - 1))
+                intAgility = ((protag.intAgility + 4) * Rnd() + (protag.intAgility - 1))
                 Randomize()
                 intToughness = ((protag.intToughness + 2) * Rnd() + (protag.intToughness - 2))
                 intMaxHP = intToughness * 20
