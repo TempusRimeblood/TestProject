@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Armor.vb" />
+    <Compile Include="Aug.vb" />
     <Compile Include="CombatFunctions.vb" />
     <Compile Include="frmCharacterDebug.Designer.vb">
       <DependentUpon>frmCharacterDebug.vb</DependentUpon>

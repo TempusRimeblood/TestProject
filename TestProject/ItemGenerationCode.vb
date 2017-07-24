@@ -435,7 +435,7 @@ Module ItemGenerationCode
         Loop
         Randomize()
         Armor(intArmorCreated).intBody = strBody(40 * Rnd() + 1)
-        Melee(intArmorCreated).strBody = strBody(40 * Rnd(-1) + 1)
+        Armor(intArmorCreated).strBody = strBody(40 * Rnd(-1) + 1)
         Select Case Armor(intArmorCreated).intBody
             Case < 0, >= 10
                 Armor(intArmorCreated).intArmorType = 1 ' Helmet
@@ -465,6 +465,46 @@ Module ItemGenerationCode
 
         End Select
         intArmorCreated += 1
+    End Sub
+
+    'This is the aug generation sub
+    Public Sub auggen()
+        Augs(intAugsCreated) = New Aug
+        Dim strPath, strBody(20), strPrefix(10), strSuffix(10) As String
+        Dim intX As Integer = 1
+        Dim reader As StreamReader
+        'This randomizes the aug body, determining what kind of aug it is
+        strPath = "..\..\txt\augbody.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strBody(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Randomize()
+        Augs(intAugsCreated).intBody = strBody(20 * Rnd() + 1)
+        Augs(intAugsCreated).strBody = strBody(20 * Rnd(-1) + 1)
+        Select Case Armor(intArmorCreated).intBody
+            Case < 0, >= 5
+                Augs(intAugsCreated).intAugType = 1 ' Head
+                Augs(intAugsCreated).headauggen()
+                Augs(intAugsCreated).namegen()
+            Case > 6, <= 10
+                Augs(intAugsCreated).intAugType = 2 ' Body
+                Augs(intAugsCreated).bodyauggen()
+                Augs(intAugsCreated).namegen()
+
+            Case > 10, <= 15
+                Augs(intAugsCreated).intAugType = 3 ' Arms
+                Augs(intAugsCreated).armsauggen()
+                Augs(intAugsCreated).namegen()
+
+            Case > 16, <= 20
+                Augs(intAugsCreated).intAugType = 4 ' Legs
+                Augs(intAugsCreated).legsauggen()
+                Augs(intAugsCreated).namegen()
+
+        End Select
+        intAugsCreated += 1
     End Sub
 
 End Module
