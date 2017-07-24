@@ -1,0 +1,50 @@
+Katana
+Collapsible Longsword
+Nodachi
+Machete
+Parang
+Vibro-Rapier
+Ram-Dao
+Khanda
+Claymore
+Kris
+Hatchet
+Tomahawk
+Dane Axe
+Breaching Axe
+Labrys
+Splitting Axe
+Masakari
+Fire Axe
+Headhunting Axe
+Skull-Chopper
+Nightstick
+Collapsible Baton
+Tetsubo
+Blackjack
+Baseball Bat
+Improvised Club
+Sledgehammer
+Combat Maul
+Shillelagh
+Warhammer
+Combat Knife
+Ceramic Knife
+Karambit
+Glass Knife
+Punch Dagger
+Switchblade
+Dive Knife
+Bowie Knife
+Shiv
+Kukri
+Electro-Knuckles
+Stun Baton
+Shock Hammer
+Monofilament Whip
+Monofilament Combat Chainsaw
+Shock Blade
+Thermoconductive Blade
+Power Fist
+Pneumatic Hammer
+Electro-Claw Gauntlets

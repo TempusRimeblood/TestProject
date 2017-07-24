@@ -1,0 +1,10 @@
+ 
+Red-Dot Sighted
+Reflex Sighted
+Tritium Sighted
+Marksman Sighted
+Holo-Sighted
+ACOG Scoped
+Hard-Light Scoped
+Magna-Scoped
+EBR-Scoped

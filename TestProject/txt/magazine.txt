@@ -1,4 +1,5 @@
-Standard Magazine
+ 
 Extended Magazine
 Drum-Mag
 Dual Mags
+Casket Mag

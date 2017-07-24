@@ -110,6 +110,7 @@
     <Compile Include="GameLoopFunctions.vb" />
     <Compile Include="GlobalVariables.vb" />
     <Compile Include="ItemGenerationCode.vb" />
+    <Compile Include="MeleeWeapon.vb" />
     <Compile Include="Mob.vb" />
     <Compile Include="MobSpawnFunctions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
