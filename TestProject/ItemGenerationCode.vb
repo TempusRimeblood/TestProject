@@ -6,32 +6,19 @@ Module ItemGenerationCode
     'to do.
     Public intRangedCreated As Integer
     Public intMeleeCreated As Integer
-    Public intHelmetCreated As Integer
-    Public intTorsoCreated As Integer
-    Public intGlovesCreated As Integer
-    Public intBootsCreated As Integer
-    Public intHeadCreated As Integer
-    Public intBodyCreated As Integer
-    Public intArmsCreated As Integer
-    Public intLegsCreated As Integer
+    Public intArmorCreated As Integer
+    Public intAugsCreated As Integer
 
     Public Gun(512) As RangedWeapon
     Public Melee(512) As MeleeWeapon
-    Public Helmet(512) As Helmet
-    Public Torso(512) As Torso
-    Public Gloves(512) As Gloves
-    Public Boots(512) As Boots
-    Public Head(512) As HeadAug
-    Public Body(512) As BodyAug
-    Public Arms(512) As ArmsAug
-    Public Legs(512) As LegsAug
+    Public Armor(512) As Armor
+    Public Augs(512) As Aug
 
+    'This sub determines what kind of loot to generate on a loot drop.
     Public Sub makeloot()
         Dim rnditemcode As Integer
         Dim rnditemtype As String
         Dim rndweapontype As String
-        Dim rndarmortype As String
-        Dim rndaugtype As String
         Randomize()
         rnditemcode = (3 * Rnd() + 1)
         Select Case rnditemcode
@@ -49,43 +36,14 @@ Module ItemGenerationCode
                 End Select
             Case 2
                 rnditemtype = "Armor"
-                Randomize()
-                rndarmortype = (4 * Rnd() + 1)
-                Select Case rndarmortype
-                    Case 1
-                        rndarmortype = "Helmet"
-                        helmetgen()
-                    Case 2
-                        rndarmortype = "Torso"
-                        torsogen()
-                    Case 3
-                        rndarmortype = "Gloves"
-                        glovesgen()
-                    Case 4
-                        rndarmortype = "Boots"
-                        bootsgen()
-                End Select
-
+                armorgen()
             Case 3
                 rnditemtype = "Augment"
-                Randomize()
-                rndaugtype = (4 * Rnd() + 1)
-                Select Case rndaugtype
-                    Case 1
-                        rndaugtype = "Head"
-                        headauggen()
-                    Case 2
-                        rndaugtype = "Body"
-                        bodyauggen()
-                    Case 3
-                        rndaugtype = "Arms"
-                        armsauggen()
-                    Case 4
-                        rndaugtype = "Legs"
-                        legsauggen()
-                End Select
+                auggen()
         End Select
     End Sub
+    'This is the ranged weapon generation function.  I can break this and the XXgen() functions out into the RangedWeapon class
+    'for simplicity's sake.
 
     Public Sub RangedGen()
         Gun(intRangedCreated) = New RangedWeapon
@@ -410,6 +368,8 @@ Module ItemGenerationCode
             " " & Gun(intRangedCreated).strUnder & " " & Gun(intRangedCreated).strBarrel & " " & Gun(intRangedCreated).strUpprRcvr
     End Sub
 
+    'This is the melee generation sub. It starts the process of generating a new melee weapon, but the core functions and subs
+    'are contained within the actual MeleeWeapon class.
     Public Sub MeleeGen()
         Melee(intMeleeCreated) = New MeleeWeapon
         Dim strPath, strBody(50), strPrefix(10), strSuffix(10) As String
@@ -458,4 +418,53 @@ Module ItemGenerationCode
         End Select
         intMeleeCreated += 1
     End Sub
+
+    'This is the armor generation sub
+
+    Public Sub armorgen()
+        Armor(intarmorCreated) = New Armor
+        Dim strPath, strBody(40), strPrefix(10), strSuffix(10) As String
+        Dim intX As Integer = 1
+        Dim reader As StreamReader
+        'This randomizes the armor body, determining what kind of armor it is
+        strPath = "..\..\txt\armorbody.txt"
+        reader = File.OpenText(strPath)
+        Do While reader.Peek <> reader.EndOfStream
+            strBody(intX) = reader.ReadLine
+            intX += 1
+        Loop
+        Randomize()
+        Armor(intArmorCreated).intBody = strBody(40 * Rnd() + 1)
+        Melee(intArmorCreated).strBody = strBody(40 * Rnd(-1) + 1)
+        Select Case Armor(intArmorCreated).intBody
+            Case < 0, >= 10
+                Armor(intArmorCreated).intArmorType = 1 ' Helmet
+                Armor(intArmorCreated).helmetgen()
+                Armor(intArmorCreated).namegen()
+                Armor(intArmorCreated).HelmetStats()
+                Armor(intArmorCreated).Affixes()
+
+            Case > 10, <= 20
+                Armor(intArmorCreated).intArmorType = 2 ' Torso
+                Armor(intArmorCreated).torsogen()
+                Armor(intArmorCreated).namegen()
+                Armor(intArmorCreated).TorsoStats()
+                Armor(intArmorCreated).Affixes()
+            Case > 20, <= 30
+                Armor(intArmorCreated).intArmorType = 3 ' Gloves
+                Armor(intArmorCreated).glovegen()
+                Armor(intArmorCreated).namegen()
+                Armor(intArmorCreated).GlovesStats()
+                Armor(intArmorCreated).Affixes()
+            Case > 30, <= 40
+                Armor(intArmorCreated).intArmorType = 4 ' Boots
+                Armor(intArmorCreated).bootsgen()
+                Armor(intArmorCreated).namegen()
+                Armor(intArmorCreated).BootsStats()
+                Armor(intArmorCreated).Affixes()
+
+        End Select
+        intArmorCreated += 1
+    End Sub
+
 End Module

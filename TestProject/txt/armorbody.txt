@@ -1,0 +1,40 @@
+Scrap Helmet
+Ballistic Mask
+Gas Mask
+Motorcycle Helmet
+Riot Helmet
+Battle Helmet
+Corp-Sec Helmet
+Future Soldier Helmet
+Milspec Helmet
+Praetor Helmet
+Tattered Leathers
+Kevlar Vest
+Armored Longcoat
+Motorcycle Armor
+Riot Armor
+Battle Armor
+Corp-Sec Armor
+Future Soldier Armor
+Milspec Armor
+Praetor Armor
+Fingerless Gloves
+Work Gloves
+Leather Gloves
+Motorcycle Gloves
+Armored Gloves
+Kevlar Gloves
+ABS Gloves
+Polymer Gloves
+Future Soldier Gloves
+Praetor Gloves
+Run-Down Boots
+Heavy Boots
+Combat Boots
+Motorcycle Boots
+Jackboots
+Cerasteel-Toed Boots
+Corp-Sec Boots
+Future Soldier Boots
+Milspec Boots
+Praetor Boots
