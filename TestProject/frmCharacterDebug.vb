@@ -120,8 +120,8 @@
     End Sub
 
     Private Sub btnAtkTest_Click(sender As Object, e As EventArgs) Handles btnAtkTest.Click
-        AttackCheck(protag.intAgility, protag.intStrength)
-        DamageCheck(Mobs(intMobsCreated).intCurrentHP, intDmgRoll)
+        AttackType()
+        DamageCheck(Mobs(intMobsCreated).intCurrentHP, intDmgRoll, Mobs(intMobsCreated).intMobArmorValue)
         HitReport()
         stsFeedLbl.Text = strHitReport
     End Sub
