@@ -125,4 +125,8 @@
         HitReport()
         stsFeedLbl.Text = strHitReport
     End Sub
+
+    Private Sub btnMobSpawner_Click(sender As Object, e As EventArgs) Handles btnMobDebug.Click
+
+    End Sub
 End Class

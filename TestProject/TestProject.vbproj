@@ -109,6 +109,12 @@
     <Compile Include="frmCharacter.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmMobDebug.Designer.vb">
+      <DependentUpon>frmMobDebug.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMobDebug.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GameLoopFunctions.vb" />
     <Compile Include="GlobalVariables.vb" />
     <Compile Include="ItemGenerationCode.vb" />
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCharacter.resx">
       <DependentUpon>frmCharacter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMobDebug.resx">
+      <DependentUpon>frmMobDebug.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

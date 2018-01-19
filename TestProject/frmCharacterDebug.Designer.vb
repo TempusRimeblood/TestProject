@@ -56,6 +56,8 @@ Partial Class frmCharacterDebug
         Me.btnAtkTest = New System.Windows.Forms.Button()
         Me.stsFeed = New System.Windows.Forms.StatusStrip()
         Me.stsFeedLbl = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.btnMobDebug = New System.Windows.Forms.Button()
+        Me.btnItemDebug = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.stsFeed.SuspendLayout()
         Me.SuspendLayout()
@@ -376,14 +378,34 @@ Partial Class frmCharacterDebug
         'stsFeedLbl
         '
         Me.stsFeedLbl.Name = "stsFeedLbl"
-        Me.stsFeedLbl.Size = New System.Drawing.Size(121, 17)
+        Me.stsFeedLbl.Size = New System.Drawing.Size(120, 17)
         Me.stsFeedLbl.Text = "ToolStripStatusLabel1"
+        '
+        'btnMobDebug
+        '
+        Me.btnMobDebug.Location = New System.Drawing.Point(255, 305)
+        Me.btnMobDebug.Name = "btnMobDebug"
+        Me.btnMobDebug.Size = New System.Drawing.Size(75, 23)
+        Me.btnMobDebug.TabIndex = 17
+        Me.btnMobDebug.Text = "Mob Debug"
+        Me.btnMobDebug.UseVisualStyleBackColor = True
+        '
+        'btnItemDebug
+        '
+        Me.btnItemDebug.Location = New System.Drawing.Point(255, 339)
+        Me.btnItemDebug.Name = "btnItemDebug"
+        Me.btnItemDebug.Size = New System.Drawing.Size(75, 23)
+        Me.btnItemDebug.TabIndex = 18
+        Me.btnItemDebug.Text = "Item Test"
+        Me.btnItemDebug.UseVisualStyleBackColor = True
         '
         'frmCharacterDebug
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(509, 425)
+        Me.Controls.Add(Me.btnItemDebug)
+        Me.Controls.Add(Me.btnMobDebug)
         Me.Controls.Add(Me.stsFeed)
         Me.Controls.Add(Me.btnAtkTest)
         Me.Controls.Add(Me.btnHeal)
@@ -446,4 +468,6 @@ Partial Class frmCharacterDebug
     Friend WithEvents btnAtkTest As Button
     Friend WithEvents stsFeed As StatusStrip
     Friend WithEvents stsFeedLbl As ToolStripStatusLabel
+    Friend WithEvents btnMobDebug As Button
+    Friend WithEvents btnItemDebug As Button
 End Class
