@@ -1,31 +1,35 @@
 ﻿Imports System.IO
 
 Public Class Mob
-    Public strName As String ' Enemy name
-    Public intClassDetermine As Integer ' Randomized integer, used to determine if melee or ranged enemy
-    Public strClass As String ' Stores the enemy class
-    Public intStrength As Integer ' Strength
-    Public intAgility As Integer ' Agility
-    Public intToughness As Integer ' Toughness
-    Public intCurrentHP As Integer 'Current HP
-    Public intMaxHP As Integer 'Max HP
-    Public blnIsTarget As Boolean
-    Public blnMonsterMade 'Boolean value to confirm stats are made
-    Public blnMonsterKilled = False 'Boolean value to determine if the monster has been killed. Starts as False.
-    Public MobMelee As New MeleeWeapon ' Mobs have melee weapons, too
-    Public MobGun As New RangedWeapon ' Mobs can have ranged weapons
-    Public MobHelm As New Armor ' Mob armor is the next four variables
-    Public MobTorso As New Armor
-    Public MobGloves As New Armor
-    Public MobBoots As New Armor '
-    Public intMobArmorValue As Integer ' Mob's armor value - this is subtracted from the incoming damage
-    Public intMeleeAccuracyMod As Integer ' Accuracy modifier - this will apply to combat functions
-    Public intRangedAccuracyMod As Integer ' Accuracy modifier - this will apply to combat functions
-    Public intRangedDamageMin As Integer 'Minimum ranged damage, determined by weapon
-    Public intRangedDamageMax As Integer 'Maximum melee damage, determined by weapon
-    Public intMeleeDamageMin As Integer 'Minimum melee damage, determined by weapon
-    Public intMeleeDamageMax As Integer 'Maximum melee damage, determined by weapon
-    Dim blnHasHelmet, blnHasTorso, blnHasBoots, blnHasGloves As Boolean ' These booleans dictate how many pieces of armor an enemy has
+    Public Property strName As String ' Enemy name
+    Public Property intClassDetermine As Integer ' Randomized integer, used to determine if melee or ranged enemy
+    Public Property strClass As String ' Stores the enemy class
+    Public Property intStrength As Integer ' Strength
+    Public Property intAgility As Integer ' Agility
+    Public Property intToughness As Integer ' Toughness
+    Public Property intCurrentHP As Integer 'Current HP
+    Public Property intMaxHP As Integer 'Max HP
+    Public Property blnIsTarget As Boolean
+    Public Property blnMonsterMade 'Boolean value to confirm stats are made
+    Public Property blnMonsterKilled = False 'Boolean value to determine if the monster has been killed. Starts as False.
+    Public Property MobMelee As New MeleeWeapon ' Mobs have melee weapons, too
+    Public Property MobGun As New RangedWeapon ' Mobs can have ranged weapons
+    Public Property MobHelm As New Armor ' Mob armor is the next four variables
+    Public Property MobTorso As New Armor
+    Public Property MobGloves As New Armor
+    Public Property MobBoots As New Armor '
+    Public Property intMobArmorValue As Integer ' Mob's armor value - this is subtracted from the incoming damage
+    Public Property intMeleeAccuracyMod As Integer ' Accuracy modifier - this will apply to combat functions
+    Public Property intRangedAccuracyMod As Integer ' Accuracy modifier - this will apply to combat functions
+    Public Property intRangedDamageMin As Integer 'Minimum ranged damage, determined by weapon
+    Public Property intRangedDamageMax As Integer 'Maximum melee damage, determined by weapon
+    Public Property intMeleeDamageMin As Integer 'Minimum melee damage, determined by weapon
+    Public Property intMeleeDamageMax As Integer 'Maximum melee damage, determined by weapon
+    Property blnHasHelmet As Boolean
+    Property blnHasTorso As Boolean
+    Property blnHasBoots As Boolean
+    Property blnHasGloves As Boolean ' These booleans dictate how many pieces of armor an enemy has
+    Property intMobIdentifier ' This integer should designate the order of mob spawns
 
     'Attempting to add function to randomize intClassDetermine.
     Public Function chooseclass()
@@ -107,7 +111,7 @@ Public Class Mob
             intX += 1
         Loop
         Randomize()
-        MobMelee.intBody = strBody(50 * Rnd() + 1)
+        MobMelee.intBody = (50 * Rnd() + 1)
         MobMelee.strBody = strBody(50 * Rnd(-1) + 1)
         Select Case MobMelee.intBody
             Case < 0, >= 10
@@ -154,7 +158,7 @@ Public Class Mob
             intX += 1
         Loop
         Randomize()
-        MobGun.intUpprRcvr = strRcvr(60 * Rnd() + 1)
+        MobGun.intUpprRcvr = (60 * Rnd() + 1)
         MobGun.strUpprRcvr = strRcvr(60 * Rnd(-1) + 1)
         Select Case MobGun.intUpprRcvr
             Case < 0, > 16
@@ -205,4 +209,6 @@ Public Class Mob
 
         intMobArmorValue = MobHelm.intArmorValue + MobTorso.intArmorValue + MobGloves.intArmorValue + MobBoots.intArmorValue
     End Sub
+
+
 End Class

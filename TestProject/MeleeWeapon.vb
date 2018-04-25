@@ -37,7 +37,7 @@ Public Class MeleeWeapon
             strPrefix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnPrefix = strPrefix(10 * Rnd() + 1)
+        intWpnPrefix = (10 * Rnd() + 1)
         strWpnPrefix = strPrefix(10 * Rnd(-1) + 1)
         'This randomizes the suffix
         strPath = "..\..\txt\bladesuffix.txt"
@@ -49,7 +49,7 @@ Public Class MeleeWeapon
             strSuffix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnSuffix = strSuffix(10 * Rnd() + 1)
+        intWpnSuffix = (10 * Rnd() + 1)
         strWpnSuffix = strSuffix(10 * Rnd(-1) + 1)
     End Sub
 

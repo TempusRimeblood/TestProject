@@ -184,7 +184,7 @@ Public Class RangedWeapon
             strMag(intX) = reader.ReadLine
             intX += 1
         Loop
-        intMagazine = strMag(5 * Rnd() + 1)
+        intMagazine = (5 * Rnd() + 1)
         strMagazine = strMag(5 * Rnd(-1) + 1)
 
         'This determines the stock type
@@ -196,7 +196,7 @@ Public Class RangedWeapon
             strStock(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnStock = strStock(6 * Rnd() + 1)
+        intWpnStock = (6 * Rnd() + 1)
         strWpnStock = strStock(6 * Rnd(-1) + 1)
 
         'This determines the sight type
@@ -208,7 +208,7 @@ Public Class RangedWeapon
             strSight(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnSight = strSight(10 * Rnd() + 1)
+        intWpnSight = (10 * Rnd() + 1)
         strWpnSight = strSight(10 * Rnd(-1) + 1)
 
         'This determines the barrel modification
@@ -220,7 +220,7 @@ Public Class RangedWeapon
             strBarrel(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnBarrel = strBarrel(7 * Rnd() + 1)
+        intWpnBarrel = (7 * Rnd() + 1)
         strWpnBarrel = strBarrel(7 * Rnd(-1) + 1)
 
         'This is the underbarrel modification
@@ -232,7 +232,7 @@ Public Class RangedWeapon
             strUnder(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnUnder = strUnder(7 * Rnd() + 1)
+        intWpnUnder = (7 * Rnd() + 1)
         strWpnUnder = strUnder(7 * Rnd(-1) + 1)
 
         'Name generation
@@ -254,7 +254,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until intMagazine <> 4 And intMagazine <> 5
-            intMagazine = strMag(5 * Rnd() + 1)
+            intMagazine = (5 * Rnd() + 1)
             strMagazine = strMag(5 * Rnd(-1) + 1)
         Loop
 
@@ -267,7 +267,7 @@ Public Class RangedWeapon
             strStock(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnStock = strStock(6 * Rnd() + 1)
+        intWpnStock = (6 * Rnd() + 1)
         strWpnStock = strStock(6 * Rnd(-1) + 1)
 
         'This determines the sight type
@@ -280,7 +280,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until intWpnSight < 7
-            intWpnSight = strSight(10 * Rnd() + 1)
+            intWpnSight = (10 * Rnd() + 1)
             strWpnSight = strSight(10 * Rnd(-1) + 1)
         Loop
 
@@ -294,7 +294,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until intWpnBarrel < 5
-            intWpnBarrel = strBarrel(7 * Rnd() + 1)
+            intWpnBarrel = (7 * Rnd() + 1)
             strWpnBarrel = strBarrel(7 * Rnd(-1) + 1)
         Loop
 
@@ -308,7 +308,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until intWpnUnder <> 6
-            intWpnUnder = strUnder(7 * Rnd() + 1)
+            intWpnUnder = (7 * Rnd() + 1)
             strWpnUnder = strUnder(7 * Rnd(-1) + 1)
         Loop
 
@@ -331,7 +331,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until intMagazine <> 4
-            intMagazine = strMag(5 * Rnd() + 1)
+            intMagazine = (5 * Rnd() + 1)
             strMagazine = strMag(5 * Rnd(-1) + 1)
         Loop
 
@@ -349,7 +349,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until intWpnSight < 5
-            intWpnSight = strSight(10 * Rnd() + 1)
+            intWpnSight = (10 * Rnd() + 1)
             strWpnSight = strSight(10 * Rnd(-1) + 1)
         Loop
 
@@ -363,7 +363,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until intWpnBarrel <> 2 And intWpnBarrel <> 3
-            intWpnBarrel = strBarrel(7 * Rnd() + 1)
+            intWpnBarrel = (7 * Rnd() + 1)
             strWpnBarrel = strBarrel(7 * Rnd(-1) + 1)
         Loop
 
@@ -377,7 +377,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until intWpnUnder <> 2 And intWpnUnder <> 3 And intWpnUnder <> 6
-            intWpnUnder = strUnder(7 * Rnd() + 1)
+            intWpnUnder = (7 * Rnd() + 1)
             strWpnUnder = strUnder(7 * Rnd(-1) + 1)
         Loop
 
@@ -399,7 +399,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until strMagazine <> 4
-            intMagazine = strMag(5 * Rnd() + 1)
+            intMagazine = (5 * Rnd() + 1)
             strMagazine = strMag(5 * Rnd(-1) + 1)
         Loop
 
@@ -412,7 +412,7 @@ Public Class RangedWeapon
             strStock(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnStock = strStock(6 * Rnd() + 1)
+        intWpnStock = (6 * Rnd() + 1)
         strWpnStock = strStock(6 * Rnd(-1) + 1)
 
         'This determines the sight type
@@ -424,7 +424,7 @@ Public Class RangedWeapon
             strSight(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnSight = strSight(10 * Rnd() + 1)
+        intWpnSight = (10 * Rnd() + 1)
         strWpnSight = strSight(10 * Rnd(-1) + 1)
 
         'This determines the barrel modification
@@ -437,7 +437,7 @@ Public Class RangedWeapon
             intX += 1
         Loop
         Do Until intWpnBarrel <> 3 And intWpnBarrel <> 5
-            intWpnBarrel = strBarrel(7 * Rnd() + 1)
+            intWpnBarrel = (7 * Rnd() + 1)
             strWpnBarrel = strBarrel(7 * Rnd(-1) + 1)
         Loop
 
@@ -450,7 +450,7 @@ Public Class RangedWeapon
             strUnder(intX) = reader.ReadLine
             intX += 1
         Loop
-        intWpnUnder = strUnder(7 * Rnd() + 1)
+        intWpnUnder = (7 * Rnd() + 1)
         strWpnUnder = strUnder(7 * Rnd(-1) + 1)
 
         'Name generation

@@ -24,14 +24,17 @@ Partial Class frmMobDebug
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gbxBackEnd = New System.Windows.Forms.GroupBox()
-        Me.lblNameIndicate = New System.Windows.Forms.Label()
-        Me.lblNumIndicator = New System.Windows.Forms.Label()
-        Me.lblClassIndicate = New System.Windows.Forms.Label()
-        Me.lblMobName = New System.Windows.Forms.Label()
-        Me.lblMobSpawn = New System.Windows.Forms.Label()
         Me.lblMobClass = New System.Windows.Forms.Label()
+        Me.lblMobSpawn = New System.Windows.Forms.Label()
+        Me.lblMobName = New System.Windows.Forms.Label()
+        Me.lblClassIndicate = New System.Windows.Forms.Label()
+        Me.lblNumIndicator = New System.Windows.Forms.Label()
+        Me.lblNameIndicate = New System.Windows.Forms.Label()
         Me.lblHP = New System.Windows.Forms.Label()
         Me.lblMobArmor = New System.Windows.Forms.Label()
+        Me.lblMobCurrentHP = New System.Windows.Forms.Label()
+        Me.lblMobArmorValue = New System.Windows.Forms.Label()
+        Me.btnMobCreate = New System.Windows.Forms.Button()
         Me.gbxBackEnd.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -60,23 +63,29 @@ Partial Class frmMobDebug
         Me.gbxBackEnd.TabStop = False
         Me.gbxBackEnd.Text = "Back-End Info"
         '
-        'lblNameIndicate
+        'lblMobClass
         '
-        Me.lblNameIndicate.AutoSize = True
-        Me.lblNameIndicate.Location = New System.Drawing.Point(14, 23)
-        Me.lblNameIndicate.Name = "lblNameIndicate"
-        Me.lblNameIndicate.Size = New System.Drawing.Size(35, 13)
-        Me.lblNameIndicate.TabIndex = 0
-        Me.lblNameIndicate.Text = "Name"
+        Me.lblMobClass.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblMobClass.Location = New System.Drawing.Point(184, 89)
+        Me.lblMobClass.Name = "lblMobClass"
+        Me.lblMobClass.Size = New System.Drawing.Size(164, 23)
+        Me.lblMobClass.TabIndex = 6
         '
-        'lblNumIndicator
+        'lblMobSpawn
         '
-        Me.lblNumIndicator.AutoSize = True
-        Me.lblNumIndicator.Location = New System.Drawing.Point(14, 57)
-        Me.lblNumIndicator.Name = "lblNumIndicator"
-        Me.lblNumIndicator.Size = New System.Drawing.Size(93, 13)
-        Me.lblNumIndicator.TabIndex = 1
-        Me.lblNumIndicator.Text = "Mob Spawn Order"
+        Me.lblMobSpawn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblMobSpawn.Location = New System.Drawing.Point(184, 56)
+        Me.lblMobSpawn.Name = "lblMobSpawn"
+        Me.lblMobSpawn.Size = New System.Drawing.Size(164, 23)
+        Me.lblMobSpawn.TabIndex = 4
+        '
+        'lblMobName
+        '
+        Me.lblMobName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblMobName.Location = New System.Drawing.Point(184, 22)
+        Me.lblMobName.Name = "lblMobName"
+        Me.lblMobName.Size = New System.Drawing.Size(164, 23)
+        Me.lblMobName.TabIndex = 3
         '
         'lblClassIndicate
         '
@@ -87,29 +96,23 @@ Partial Class frmMobDebug
         Me.lblClassIndicate.TabIndex = 2
         Me.lblClassIndicate.Text = "Mob Class"
         '
-        'lblMobName
+        'lblNumIndicator
         '
-        Me.lblMobName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblMobName.Location = New System.Drawing.Point(184, 22)
-        Me.lblMobName.Name = "lblMobName"
-        Me.lblMobName.Size = New System.Drawing.Size(164, 23)
-        Me.lblMobName.TabIndex = 3
+        Me.lblNumIndicator.AutoSize = True
+        Me.lblNumIndicator.Location = New System.Drawing.Point(14, 57)
+        Me.lblNumIndicator.Name = "lblNumIndicator"
+        Me.lblNumIndicator.Size = New System.Drawing.Size(93, 13)
+        Me.lblNumIndicator.TabIndex = 1
+        Me.lblNumIndicator.Text = "Mob Spawn Order"
         '
-        'lblMobSpawn
+        'lblNameIndicate
         '
-        Me.lblMobSpawn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblMobSpawn.Location = New System.Drawing.Point(184, 56)
-        Me.lblMobSpawn.Name = "lblMobSpawn"
-        Me.lblMobSpawn.Size = New System.Drawing.Size(164, 23)
-        Me.lblMobSpawn.TabIndex = 4
-        '
-        'lblMobClass
-        '
-        Me.lblMobClass.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblMobClass.Location = New System.Drawing.Point(184, 89)
-        Me.lblMobClass.Name = "lblMobClass"
-        Me.lblMobClass.Size = New System.Drawing.Size(164, 23)
-        Me.lblMobClass.TabIndex = 6
+        Me.lblNameIndicate.AutoSize = True
+        Me.lblNameIndicate.Location = New System.Drawing.Point(14, 23)
+        Me.lblNameIndicate.Name = "lblNameIndicate"
+        Me.lblNameIndicate.Size = New System.Drawing.Size(35, 13)
+        Me.lblNameIndicate.TabIndex = 0
+        Me.lblNameIndicate.Text = "Name"
         '
         'lblHP
         '
@@ -123,17 +126,45 @@ Partial Class frmMobDebug
         'lblMobArmor
         '
         Me.lblMobArmor.AutoSize = True
-        Me.lblMobArmor.Location = New System.Drawing.Point(23, 257)
+        Me.lblMobArmor.Location = New System.Drawing.Point(23, 258)
         Me.lblMobArmor.Name = "lblMobArmor"
         Me.lblMobArmor.Size = New System.Drawing.Size(88, 13)
         Me.lblMobArmor.TabIndex = 3
         Me.lblMobArmor.Text = "Mob Armor Value"
+        '
+        'lblMobCurrentHP
+        '
+        Me.lblMobCurrentHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblMobCurrentHP.Location = New System.Drawing.Point(193, 221)
+        Me.lblMobCurrentHP.Name = "lblMobCurrentHP"
+        Me.lblMobCurrentHP.Size = New System.Drawing.Size(164, 23)
+        Me.lblMobCurrentHP.TabIndex = 4
+        '
+        'lblMobArmorValue
+        '
+        Me.lblMobArmorValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblMobArmorValue.Location = New System.Drawing.Point(193, 257)
+        Me.lblMobArmorValue.Name = "lblMobArmorValue"
+        Me.lblMobArmorValue.Size = New System.Drawing.Size(164, 23)
+        Me.lblMobArmorValue.TabIndex = 5
+        '
+        'btnMobCreate
+        '
+        Me.btnMobCreate.Location = New System.Drawing.Point(26, 347)
+        Me.btnMobCreate.Name = "btnMobCreate"
+        Me.btnMobCreate.Size = New System.Drawing.Size(90, 23)
+        Me.btnMobCreate.TabIndex = 6
+        Me.btnMobCreate.Text = "Spawn a Mob"
+        Me.btnMobCreate.UseVisualStyleBackColor = True
         '
         'frmMobDebug
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(385, 422)
+        Me.Controls.Add(Me.btnMobCreate)
+        Me.Controls.Add(Me.lblMobArmorValue)
+        Me.Controls.Add(Me.lblMobCurrentHP)
         Me.Controls.Add(Me.lblMobArmor)
         Me.Controls.Add(Me.lblHP)
         Me.Controls.Add(Me.gbxBackEnd)
@@ -157,4 +188,7 @@ Partial Class frmMobDebug
     Friend WithEvents lblNameIndicate As Label
     Friend WithEvents lblHP As Label
     Friend WithEvents lblMobArmor As Label
+    Friend WithEvents lblMobCurrentHP As Label
+    Friend WithEvents lblMobArmorValue As Label
+    Friend WithEvents btnMobCreate As Button
 End Class

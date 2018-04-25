@@ -34,7 +34,7 @@ Public Class Armor
             strPrefix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intArmPrefix = strPrefix(10 * Rnd() + 1)
+        intArmPrefix = (10 * Rnd() + 1)
         strArmPrefix = strPrefix(10 * Rnd(-1) + 1)
         'This randomizes the suffix
         strPath = "..\..\txt\armorsuffix.txt"
@@ -46,7 +46,7 @@ Public Class Armor
             strSuffix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intArmSuffix = strSuffix(10 * Rnd() + 1)
+        intArmSuffix = (10 * Rnd() + 1)
         strArmSuffix = strSuffix(10 * Rnd(-1) + 1)
     End Sub
 
@@ -65,7 +65,7 @@ Public Class Armor
             strPrefix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intArmPrefix = strPrefix(10 * Rnd() + 1)
+        intArmPrefix = (10 * Rnd() + 1)
         strArmPrefix = strPrefix(10 * Rnd(-1) + 1)
         'This randomizes the suffix
         strPath = "..\..\txt\armorsuffix.txt"
@@ -77,7 +77,7 @@ Public Class Armor
             strSuffix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intArmSuffix = strSuffix(10 * Rnd() + 1)
+        intArmSuffix = (10 * Rnd() + 1)
         strArmSuffix = strSuffix(10 * Rnd(-1) + 1)
     End Sub
 
@@ -96,7 +96,7 @@ Public Class Armor
             strPrefix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intArmPrefix = strPrefix(10 * Rnd() + 1)
+        intArmPrefix = (10 * Rnd() + 1)
         strArmPrefix = strPrefix(10 * Rnd(-1) + 1)
         'This randomizes the suffix
         strPath = "..\..\txt\armorsuffix.txt"
@@ -108,7 +108,7 @@ Public Class Armor
             strSuffix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intArmSuffix = strSuffix(10 * Rnd() + 1)
+        intArmSuffix = (10 * Rnd() + 1)
         strArmSuffix = strSuffix(10 * Rnd(-1) + 1)
     End Sub
 
@@ -127,7 +127,7 @@ Public Class Armor
             strPrefix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intArmPrefix = strPrefix(10 * Rnd() + 1)
+        intArmPrefix = (10 * Rnd() + 1)
         strArmPrefix = strPrefix(10 * Rnd(-1) + 1)
         'This randomizes the suffix
         strPath = "..\..\txt\armorsuffix.txt"
@@ -139,7 +139,7 @@ Public Class Armor
             strSuffix(intX) = reader.ReadLine
             intX += 1
         Loop
-        intArmSuffix = strSuffix(10 * Rnd() + 1)
+        intArmSuffix = (10 * Rnd() + 1)
         strArmSuffix = strSuffix(10 * Rnd(-1) + 1)
     End Sub
 

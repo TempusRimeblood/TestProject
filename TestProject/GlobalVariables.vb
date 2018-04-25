@@ -2,9 +2,9 @@
     'This module handles back-end initializations of various assets.
     Public protag As New Player
 
-    Public intMobsCreated As Integer
+    Public MobList As New List(Of Mob)
 
-    Public Mobs(750) As Mob
+    Public intMobsSpawned As New Integer
 
 
 End Module

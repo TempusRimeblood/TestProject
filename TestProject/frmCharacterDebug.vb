@@ -1,4 +1,5 @@
 ﻿Public Class frmCharacterDebug
+    Public blnIsMobDebug As Boolean = False
     Private Sub frmCharacterDebug_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblName.Text = protag.strName & ", " & protag.strClass
         lblAgility.Text = protag.intAgility.ToString
@@ -121,12 +122,24 @@
 
     Private Sub btnAtkTest_Click(sender As Object, e As EventArgs) Handles btnAtkTest.Click
         AttackType()
-        DamageCheck(Mobs(intMobsCreated).intCurrentHP, intDmgRoll, Mobs(intMobsCreated).intMobArmorValue)
+        DamageCheck(MobList(intMobsSpawned - 1).intCurrentHP, intDmgRoll, MobList(intMobsSpawned - 1).intMobArmorValue)
         HitReport()
         stsFeedLbl.Text = strHitReport
     End Sub
 
     Private Sub btnMobSpawner_Click(sender As Object, e As EventArgs) Handles btnMobDebug.Click
+        Try
+            If blnIsMobDebug = False Then
+                frmMobDebug.Show()
+                blnIsMobDebug = True
+            Else
+                MessageBox.Show("No", "No")
+            End If
+
+        Catch ex As Exception
+
+        End Try
+
 
     End Sub
 End Class
